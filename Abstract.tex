@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+%
+
+% Set font to Helvetica
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % input umlauts
+%\usepackage
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{times} 
+
+% Set page margins
+\usepackage[margin=1in]{geometry}
+
+% Set double linespacing
+\usepackage{setspace}
+%\doublespacing
+\singlespacing
+
+% Figures
+\usepackage{graphicx}
+\graphicspath{ {Figures/} }
+\usepackage{wrapfig}
+
+% Equations
+\usepackage{amsmath, amssymb, bm}
+
+% Fancy colors - that can be called by names (https://en.wikibooks.org/wiki/LaTeX/Colors)
+\usepackage[usenames,dvipsnames]{color}
+
+% Hyperrefs
+\usepackage[plainpages=false, colorlinks=true,
+  citecolor=BlueViolet, filecolor=black, linkcolor=RoyalPurple,
+  urlcolor=RoyalPurple]{hyperref}
+
+% Reference style
+\usepackage{natbib}
+
+% Hypotheses
+\usepackage{ntheorem}
+\theoremseparator{:}
+\newtheorem{hyp}{Hypothesis} 
+\newcounter{subhyp} 
+\newcommand{\subhyp}{ 
+  \setcounter{subhyp}{0} 
+  \renewcommand\thehyp{\protect\stepcounter{subhyp}% 
+  \arabic{hyp}\alph{subhyp}\protect\addtocounter{hyp}{-1}} 
+} 
+\newcommand{\normhyp}{ 
+  \renewcommand\thehyp{\arabic{hyp}} 
+  \stepcounter{hyp} 
+} 
+
+% Definition of new commands
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\sepu}{\vspace{10pt} \hrule \vspace{6pt}\noindent}
+\newcommand{\sepl}{\vspace{6pt} \hrule \vspace{10pt}}
+\newcommand{\Al}{$^{26}$Al}
+\newcommand{\degC}{$^{\circ}$C}
+% Title, author, date
+\title{Mulitphase dynamics of planetesimal differentiation}
+\author{Marc A. Hesse}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+Geochemical and geophysical observations place tight constrains on the time scales of core formation withing the earliest planetesimals.
+The physical processes that allow metal-silicate differentiation on planetesimals in the early solar system are not well understood. Metal-silicate differentiation occurs in the presence of two melt phases with opposing buoyancy, either in a compacting porous medium or in a magma ocean. Depending on the thermal structure both process can act within the same body either at different time and/or at different depth. Metal-silicate differentiation of primordial planetesimal therefore involves complex multi-phase flows.
+Here we focus on the physics of the segregation of metal and silicate melts in a compacting porous medium. The dynamics of this process involve a complex coupling across the scales. The large-scale redistribution of energy and mass depends on pore-scale interactions between the two melts. Therefore, we propose the development of novel a multi-scale model, where the constitutive laws for the macroscopic evolution equations are determined by pore-scale simulations.
+\end{abstract}
+\end{document}

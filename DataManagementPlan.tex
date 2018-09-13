@@ -1,0 +1,96 @@
+%\documentclass[12pt]{report}
+\documentclass[12pt]{article}
+%
+
+% Set font to Helvetica
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % input umlauts
+%\usepackage
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{times} 
+
+% Set page margins
+\usepackage[margin=1in]{geometry}
+
+% Set double linespacing
+\usepackage{setspace}
+%\doublespacing
+\singlespacing
+
+% Figures
+\usepackage{graphicx}
+\graphicspath{ {Figures/} }
+\usepackage{wrapfig}
+
+% Equations
+\usepackage{amsmath, amssymb, bm}
+
+% Fancy colors - that can be called by names (https://en.wikibooks.org/wiki/LaTeX/Colors)
+\usepackage[usenames,dvipsnames]{color}
+
+% Hyperrefs
+\usepackage[plainpages=false, colorlinks=true,
+  citecolor=BlueViolet, filecolor=black, linkcolor=RoyalPurple,
+  urlcolor=RoyalPurple]{hyperref}
+
+% Reference style
+%\usepackage{natbib}
+\usepackage[square,numbers,sort&compress]{natbib}
+
+% Hypotheses
+\usepackage{ntheorem}
+\theoremseparator{:}
+\newtheorem{hyp}{Hypothesis} 
+\newcounter{subhyp} 
+\newcommand{\subhyp}{ 
+  \setcounter{subhyp}{0} 
+  \renewcommand\thehyp{\protect\stepcounter{subhyp}% 
+  \arabic{hyp}\alph{subhyp}\protect\addtocounter{hyp}{-1}} 
+} 
+\newcommand{\normhyp}{ 
+  \renewcommand\thehyp{\arabic{hyp}} 
+  \stepcounter{hyp} 
+} 
+
+% Definition of new commands
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\sepu}{\vspace{10pt} \hrule \vspace{6pt}\noindent}
+\newcommand{\sepl}{\vspace{6pt} \hrule \vspace{10pt}}
+\newcommand{\Al}{$^{26}$Al}
+\newcommand{\degC}{$^{\circ}$C}
+% Title, author, date
+
+\title{Mulitphase dynamics of planetesimal differentiation}
+\author{PI: Marc A. Hesse, Co-PI: Ma{\v s}a Prodanovi{\'c}}
+
+\begin{document}
+
+\maketitle
+
+\begin{document}
+
+\section*{Data Management Plan}
+
+We provide the dissemination/data management plan for each data category the proposed research will produce.
+
+\begin{enumerate}
+    
+\item Research software
+We will incorporate all additions into the existing level set method software for capillary dominated displacement in porous media (LSMPQS software, \cite{prodanovic_level_2010}).
+The  LSMPQS website contains all of the information necessary to download, install and run the software. The existing software manual will be extended to include new developments. During the project we will migrate the extended LSMPQS software to a GitHub \cite{noauthor_worlds_nodate} repository which allows version control.
+
+\item Simulation output and images of porous materials
+We will upload image sequences as well as interface movement simulation output to Digital Rocks Portal (DRP). DRP is supported by NSF CAREER and Earthcube grants of PI Prodanovi\'{c} \cite{prodanovic_digital_2015}. Digital Rocks is a data portal for fast storage and retrieval, sharing, organization and analysis of images of varied porous micro-structures. It has the purpose of enhancing research resources for modeling/prediction of porous material properties in the fields of Petroleum, Civil and Environmental Engineering as well as Geology. This platform allows managing,  preserving, visualization and basic analysis of available images of porous materials and experiments performed on them, and any accompanying measurements (porosity, capillary pressure, permeability, electrical, NMR and elastic properties, etc.) required for both validation on modeling approaches and the upscaling and building of larger (hydro)geological models. 
+Note that all projects (data posted) can get a digital object identifier that allows their permanent storage and referencing in journal publications. For instance, please refer to the simulations and  images related to our previous project on texturally equilibrated porous materials: \cite{ghanbarzadeh_meteorite_2016,ghanbarzadeh_synthetic_2015}
+
+\item Conference presentations and journal publications.
+
+We plan to present our research work at American Geophysical Union Fall Meetings every December, as well as publish papers in relevant journals.
+
+\end{enumerate}
+
+\bibliographystyle{IEEEtran}
+\bibliography{data_managment}
+
+\end{document}

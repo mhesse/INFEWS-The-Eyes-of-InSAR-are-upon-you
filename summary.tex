@@ -1,0 +1,204 @@
+
+% \documentclass[11pt,final]{siamltex}
+\documentclass[11pt,final]{article}
+%\usepackage[round]{natbib}
+\usepackage[square,numbers,sort]{natbib}
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[small,bf,up]{caption}
+\renewcommand{\captionfont}{\footnotesize}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{url}
+% \usepackage[sf,bf,small,compact]{titlesec}
+ \usepackage[sf,bf,small]{titlesec}
+
+\titleformat{\subsection}[runin]
+               {\normalfont\bfseries}
+               {\thesubsection.}{.5em}{}[.]
+\def\CO2{CO$_2$}
+%% \setlength{\oddsidemargin}{0in}
+%% \setlength{\evensidemargin}{0in}
+%% \setlength{\textwidth}{6.5in}
+%% %\setlength{\topmargin}{48pt}
+%% \setlength{\topmargin}{0pt}
+%% \setlength{\headheight}{0in}
+%% \setlength{\headsep}{0in}
+%% \setlength{\textheight}{9in}
+%% To get the default sans serif font in latex, uncomment following
+%% line:
+%% Note: the default sf font is much nicer than ariel/helvetica
+\renewcommand*\familydefault{\sfdefault}
+
+\def\squeeze{\parskip=0pt\itemsep=0pt}
+\let\itemOld=\item
+\def\item{\squeeze\itemOld}
+
+%% \def\Heading#1{\par\bigskip\noindent\centerline{\bf\large #1}\nobreak\par}
+%% \def\Subheading#1{\par\bigskip\noindent\centerline{\bf #1}\medskip}
+%% \def\Subsubheading#1{\par\medskip\noindent{\bf #1.}}
+
+%% \newcounter{sect}
+%% \setcounter{sect}{0}
+%% \def\Section#1{\addtocounter{sect}{1}\setcounter{subsect}{0}%
+%% \par\medskip\noindent\centerline{\bf\large\thesect. #1}\nobreak\par\nobreak}
+
+%% \newcounter{subsect}
+%% \def\Subsection#1{\addtocounter{subsect}{1}%
+%% \par\medskip\noindent{\bf\thesect.\thesubsect. #1.}}
+
+% \def\Paragraph#1{\par{\bf #1.}}
+
+ \usepackage[plainpages=false, colorlinks=true,
+   citecolor=BlueViolet, filecolor=black, linkcolor=RoyalPurple,
+   urlcolor=RoyalPurple]{hyperref}
+
+
+%\renewcommand{\baselinestretch}{0.99}
+
+\newenvironment{nilList}
+{\begin{list}{}{\partopsep=4pt plus 2pt minus 2pt
+\topsep=0pt\labelwidth=10pt\labelsep=8pt\leftmargin=20pt
+\rightmargin=0pt\itemsep=0pt\itemindent=-10pt}}
+{\end{list}}
+
+\newcommand{\sig}{\boldsymbol\sigma}
+\newcommand{\lam}{\boldsymbol\lambda}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\g}{\mathbf{g}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\K}{\mathbf{K}}
+\newcommand{\Stor}{S_{\epsilon}}
+\renewcommand{\u}{\ensuremath{\mathbf{u}}}
+\newcommand{\s}{\boldsymbol\sigma}
+\newcommand{\f}{\ensuremath{\mathbf{f}}}
+
+\newcommand{\note}[1]{\textcolor{red}{ #1}}
+\newcommand{\todo}[1]{\textcolor{red}{ \bf #1}}
+\newcommand{\sepu}{\vspace{10pt} \hrule \vspace{6pt}\noindent}
+\newcommand{\sepl}{\vspace{6pt} \hrule \vspace{10pt}}
+
+\renewcommand{\matrix}[1] {\ensuremath{\boldsymbol{#1}}}
+\renewcommand{\vec}[1] {\ensuremath{\boldsymbol{#1}}}
+
+\renewcommand{\citep}{\cite}
+\renewcommand{\citet}{\cite}
+
+\begin{document}
+
+\pagestyle{empty}
+
+%##############################################################################
+% Project Summary
+
+%\centerline{\Large\bf }
+%\Subsubheading{Project summary}
+%\Subsubheading{Intellectual merit}
+%\Subsubheading{Broader impacts}
+
+
+
+%##############################################################################
+%\newpage\setcounter{page}{1}
+\begin{center}
+%{\Large\bf A Bayesian computational framework for characterization
+%  and management of groundwater resources via integration of
+%  large-scale satellite geodetic data and poromechanics models}
+{\bf Project Summary}
+\end{center}
+
+%%%%%%%%%%%%%%   V I S I O N  %%%%%%%%%%%%%%%%%%%%%
+
+{\bf Overview.}  Over the last decade, the production of coal and its
+share in the world energy supply have increased dramatically even in
+countries with large investments in renewable energies.  In the next
+two decades, several hundred million people will be lifted out of
+poverty and have access to electricity for the first time. If current
+trends continue, most of this electricity will come from coal.  This
+explains the critical need to develop the technology for sustainable Carbon
+Capture and Storage (CCS). CCS has the potential for significant
+reductions of anthropogenic \CO2 emissions, because deep saline
+aquifers provide large storage volumes. However, geological carbon
+storage faces two main challenges, namely the risk to induce
+seismicity leading to property damage and loss of life, and leakage of
+the injected \CO2 into potable aquifers.  The characterization of the
+injection site and continued monitoring of the \CO2 migration as well
+as stress changes in the region of elevated pressure are therefore
+particularly important to maximize the amount of \CO2 that can be
+stored, while ensuring the long term safety of storage sites.
+
+The overall goal of our proposed research is thus to (1) integrate
+well pressure and, where available, surface deformation data into
+coupled poromechanics models by solving the {\em inverse problem} for
+unknown subsurface properties; (2) to quantify the uncertainty in the
+inference of the subsurface properties, and (3) to use the resulting
+inferred poromechanics models together with their uncertainty to
+design {\em optimal control} strategies for well injection that
+optimize the amount of stored \CO2 while controlling the risk of
+human-induced seismicity.  {\em It is essential that this
+  poromechanics-based inference/prediction/control framework takes
+  into account uncertainties at every stage, since both the
+  observational data and the models are uncertain.} However, solving
+stochastic inverse/optimal control problems for large-scale PDE models
+such as those of poromechanics is intractable using current methods,
+which suffer from the ``curse of dimensionality.''  Thus, our
+challenge is to overcome these barriers by developing scalable methods
+and algorithms that exploit the problem structure to reduce effective
+dimensionality. Overcoming the scalability problem by exploiting
+low-dimensional problem structure is essential if we are to have any
+hope of optimally and sustainably managing natural and human resources
+based on predictive physics-based models, which is a central goal of
+the emerging field of computational sustainability.
+
+{\bf Intellectual merits.}
+%
+The proposed work will result in a rational, physics-model-based,
+end-to-end computational sustainability framework that accounts for
+uncertainty across all components: from observations, through inverse
+solution, through optimal design of observation locations, to
+model-predictive optimal control for sustainable \CO2 storage that
+reduces the risk of seismicity at existing faults. By exploiting
+problem structure to reduce effective problem dimension, we expect
+that we will be able to overcome the curse of dimensionality that
+plagues PDE-based inversion and control under uncertainty, leading to
+significantly improved methods for inference of subsurface models from
+data, and therefore the sustainable management of geological \CO2
+storage.
+
+{\bf Broader impacts.}
+%
+Dovetailing with our research activities, we propose an educational
+and outreach program designed to communicate to a more general audience of
+students, disciplinary researchers, and the lay public the fruits of
+our work, and of the wider benefits of the integration of computer \&
+computational science, computational statistics, applied math,
+engineering, and geosciences to address sustainability problems.
+%
+We will parlay our leadership positions in our respective communities
+to organize workshops and international meetings, edit volumes, 
+% teach summer schools, 
+develop courses, create educational programs, and engage in community
+outreach activities---as we have done in the past---but with greater
+emphasis on the field of computational sustainability. Beyond the
+CCS sustainability setting,
+% the framework we develop is
+% clearly applicable to a much broader set of science and engineering
+% problems for which large-scale uncertain models must be inferred from
+% large-scale uncertain data, and then used to solve decision-making
+% problems under uncertainty.  Thus our work will impact a much broader
+% set of problems than those targeted here.
+{\em the framework we develop is clearly applicable to a much broader
+  set of science and engineering problems for which large-scale
+  uncertain models must be inferred from large-scale uncertain data,
+  and then used to solve optimal decision-making problems under
+  uncertainty}.
+% the trick is the design of problem-specific reduction operators.
+
+\end{document}
+
+

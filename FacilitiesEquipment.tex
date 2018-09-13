@@ -1,0 +1,115 @@
+%\documentclass[12pt]{report}
+\documentclass[12pt]{article}
+%
+
+% Set font to Helvetica
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % input umlauts
+%\usepackage
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{times} 
+
+% Set page margins
+\usepackage[margin=1in]{geometry}
+
+% Set double linespacing
+\usepackage{setspace}
+%\doublespacing
+\singlespacing
+
+% Figures
+\usepackage{graphicx}
+\graphicspath{ {Figures/} }
+\usepackage{wrapfig}
+
+% Equations
+\usepackage{amsmath, amssymb, bm}
+
+% Fancy colors - that can be called by names (https://en.wikibooks.org/wiki/LaTeX/Colors)
+\usepackage[usenames,dvipsnames]{color}
+
+% Hyperrefs
+\usepackage[plainpages=false, colorlinks=true,
+  citecolor=BlueViolet, filecolor=black, linkcolor=RoyalPurple,
+  urlcolor=RoyalPurple]{hyperref}
+
+% Reference style
+%\usepackage{natbib}
+\usepackage[square,numbers,sort&compress]{natbib}
+
+% Hypotheses
+\usepackage{ntheorem}
+\theoremseparator{:}
+\newtheorem{hyp}{Hypothesis} 
+\newcounter{subhyp} 
+\newcommand{\subhyp}{ 
+  \setcounter{subhyp}{0} 
+  \renewcommand\thehyp{\protect\stepcounter{subhyp}% 
+  \arabic{hyp}\alph{subhyp}\protect\addtocounter{hyp}{-1}} 
+} 
+\newcommand{\normhyp}{ 
+  \renewcommand\thehyp{\arabic{hyp}} 
+  \stepcounter{hyp} 
+} 
+
+% Definition of new commands
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+\newcommand{\sepu}{\vspace{10pt} \hrule \vspace{6pt}\noindent}
+\newcommand{\sepl}{\vspace{6pt} \hrule \vspace{10pt}}
+\newcommand{\Al}{$^{26}$Al}
+\newcommand{\degC}{$^{\circ}$C}
+% Title, author, date
+
+\title{Mulitphase dynamics of planetesimal differentiation}
+\author{PI: Marc A. Hesse, Co-PI: Ma{\v s}a Prodanovi{\'c}}
+
+\begin{document}
+
+\maketitle
+
+\begin{document}
+
+\section*{Facilities and Equipment}
+We propose to develop new computational models for the differentiation of planetesimals. Development will initially occur on the individual workstations of the graduate students. Later, as simulation become more demanding the graduate students will utilize the appropriate computational resources located in their research group, department and at the university. A brief description of these resources is given below. The list of resources below is somewhat excessive, in response to previous reviewers comments about access to adequate computational resources.
+
+\subsection*{Research group computational resources}
+PI Hesse has a new Dell PowerEdge R940 server purchased in the fall of 2017. This server has 16 Intel Xeon Gold 6130 2.1G processors and allows sufficient parallel computing for the project proposed here. The server is optimized for memory intensive applications and has 1TB of random access memory (32 * 32GB RDIMM 2666MT/s Dual Rank). In practice, the PI has found this combination to be the the most useful for the medium size computations proposed here. A large part of the proposed computations will be performed on this machine.
+
+\subsection*{Departmental computational resources}
+The PI also has access to a departmental computer cluster composed of a 24-nodes/192 core cluster providing 1.68 million cpu-hrs annually (dual quad core Intel Xeon X5550 2.66 GHz processors) with 24-GBytes of memory per node and infiniband connections and a 14 node/112 core cluster (dual quad core Intel Xeon E5410 2.33 GHz processors) with 24 Gigabytes of memory per node.  Also available for model post-processing, a 32 node shared memory system with 128-GBytes of memory. These systems are attached to a 1 Petabyte storage system with integrated backup via 10 Ggps Ethernet connection.
+
+The research group of PI Hesse regularly uses this resource, and we anticipate using it heavily to execute the parameter sweeps in the final phase of this project. 
+
+\subsection*{Institute for Computational Science and Engineering}
+Both PI Hesse and co-PI Prodanovic are members of the Institute of Computation and Engineering (ICES) at the University of Texas and have access to the following shared computational facilities there. We don't anticipate haveing to use these resources, but they do provide a backup if computations become more demanding.
+
+\emph{Networking Infrastructure}. The POB building networks are designed to support both bandwidth-intensive computational research and to accommodate new technology when available. The networks are built around high-performance, multilayer Cisco 6509, 2960 and 4003 network switches, with Lucent Gigaspeed copper Ethernet and Multimode Fiberoptic to each desktop and work area. Wireless networking is available throughout
+the building and courtyard area. 
+
+\emph{Workstation Environment}. The ICES workstation environment encompasses all offices, cubicles, work areas, and laboratories. Over 300 general-purpose workstations are available, including Linux-based PCs, Macs, and Windows PCs. Several color printers
+and scanners are available. File and email service is provided by a number of Linux servers with over 25 terabytes of disk storage. Other Mac and Linux-based computers function as web servers, LDAP authentication servers, domain name servers, directory servers, application servers, and compute servers.
+
+
+\emph{On-site Linux-Based Clusters}. ICES systems and networking team currently supports ten Linux-based Clusters with others in the planning and design stages. These include the following:
+\begin{enumerate}
+    \item Bevo3, a 180-core cluster
+    \item Prism2, a 64-core rendering cluster
+    \item Junior, a 184-cores compute cluster
+    \item Stampede\_1, a 512-cores compute cluster
+    \item Ronaldo, a 120-core compute cluster
+    \item Reynolds, a 256-core compute cluster
+    \item Bevo2, a 184-core compute cluster
+\end{enumerate}
+
+\subsection*{University wide computational resources}
+
+
+All University of Texas researchers have access to high performance computing resourced in Texas Advanced Computing Center (TACC, http://www.tacc.utexas.edu). The Lattice Boltmann software used to copute permeabilities of pore-scale melt networks is already installed at TACC and has been used extensively by the research group of co-PI Prodanovic.
+
+
+TACC develops and deploys an integrated cyber-infrastructure of advanced computing resources and services to enhance the research and education activities of the faculty, staff, and students at UT Austin, throughout Texas, and across the US by its involvement in various state and national programs. This infrastructure includes high performance computing (HPC) systems, advanced scientific visualization systems, data analytics systems, cloud computing systems, data servers and storage/archival systems, IT systems, high-bandwidth networks, and a comprehensive software environment comprising applications, tools, libraries, and databases. Services include documentation, consulting, and training in a wide variety of advanced computing topics.
+
+Access to parallel machines such as Stampede, Lonestar 5 is free for UT Austin research groups. We are unlikely to hit the 5TB free storage limit on data resources with simulations proposed for this project.
+
+\end{document}
