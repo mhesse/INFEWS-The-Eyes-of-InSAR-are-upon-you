@@ -91,7 +91,8 @@
 \newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
 \renewcommand{\matrix}[1] {\ensuremath{\boldsymbol{#1}}}
 \renewcommand{\vec}[1] {\ensuremath{\boldsymbol{#1}}}
-
+\newcommand{\sepu}{\vspace{10pt} \hrule \vspace{6pt}\noindent}
+\newcommand{\sepl}{\vspace{6pt} \hrule \vspace{10pt}}
 \renewcommand{\citep}{\cite}
 \renewcommand{\citet}{\cite}
 
@@ -119,7 +120,7 @@
 
 \begin{center}
 {\large \bf
-INFEWS: A Bayesian inference/prediction/control framework for subsurface fluid injection/extraction based on the integration of geodetic data and geomechanics}
+INFEWS: A Bayesian inference/prediction/control framework for groundwater management based on the integration of geodetic data and geomechanics}
 %Bayesian characterization/management of groundwater resources via
 %integrated large-scale satellite geodetic data and poromechanics
 %modeling}
@@ -136,7 +137,10 @@ INFEWS: A Bayesian inference/prediction/control framework for subsurface fluid i
 % Intro GW depletion
 Securing water resources for human and agricultural use while balancing the needs of the natural world is rapidly emerging as perhaps the critical issue challenging water managers at all levels of government and in the private sector. Added to concerns that already exist about water shortages and pollution, are the potential impacts of varying climate and associated extreme events such as droughts, floods, and heavy precipitation. 
 
-While all fresh water is under pressure around the globe, groundwater (GW) is of particular concern because GW extraction has tripled over the last 50 years (Figure~\ref{fig:GW Intro}\emph{a}). In particular, areas with persistent water stress and large aquifer systems have increased their reliance on GW and now experience sustained GW depletion \cite{Hanasaki2008,Wada2010,Scanlon2012}.
+
+% Water scarcity and food security
+While all fresh water is under pressure around the globe, groundwater (GW) is of particular concern because GW extraction has tripled over the last 50 years (Figure~\ref{fig:GW Intro}\emph{a}). 
+This trend is largely driven by the increase in irrigated agriculture required to feed an ever increasing world population \cite{Wada2010,Hoekstra2012}. Irrigated agriculture produces \mytilde 40\% of the global food supply and accounts for \mytilde70\% of the global freshwater consumption \cite{Siebert2010,Kummu2014}. Water for irrigation used to be mostly surface water, but today \mytilde 40\% is supplied by GW extraction \cite{Rost2008,Vorosmarty2000}. This \textbf{agricultural groundwater revolution} has fundamentally changed the role of GW in human society \cite{UNESCO2012}. In the past food production was limited by the availability of fertile land, but fresh water scarcity is projected to become the limiting factor in the near future \cite{Watkins2006,Sauer2010,Hanjra2010}. 
 
 \begin{figure}[h]
 \centering
@@ -145,154 +149,86 @@ While all fresh water is under pressure around the globe, groundwater (GW) is of
 \label{fig:GW Intro}
 \end{figure}
 
-% Water scarcity and food security
-This trend is largely driven by the increase in irrigated agriculture required to feed an ever increasing world population \cite{Wada2010,Hoekstra2012}. Irrigated agriculture produces \mytilde 40\% of the global food supply and accounts for \mytilde70\% of the global freshwater consumption \cite{Siebert2010,Kummu2014}. Water for irrigation used to be mostly surface water, but today \mytilde 40\% is supplied by GW extraction \cite{Rost2008,Vorosmarty2000}. This \emph{agricultural groundwater revolution} has fundamentally changed the role of GW in human society \cite{UNESCO2012}. In the past food production was limited by the availability of fertile land, but fresh water scarcity is projected to become the limiting factor in the near future \cite{Watkins2006,Sauer2010,Hanjra2010}. 
+
 
 % A benefit of the increasing reliance of irrigation on GW is that food production is less vulnerable droughts, because aquifers storage dampens the inherent variability in precipitation.
 
 % GW depletion
-Estimates suggest that half the GW extracted for irrigation exceeds aquifer recharge and is hence unsustainable \cite{Rost2008,Vorosmarty2000}. The UN Human Development Report estimates that over 1.4 billion people currently live in areas where GW depletion poses a \emph{grave threat to agricultural systems, food security and livelihoods} \cite{UNESCO2012}. The negative consequences of the GW depletion include: ; increased energy required for water production \cite{Scanlon2012,Narayanamoorthy2015}; irreversible aquifer compaction and loss of GW storage (Figure~\ref{fig:GW Intro}\emph{b})degradation of GW groundwater dependent ecosystems and loss of ecosystem services \cite{Klove2014,Doody2017}; flooding and saltwater intrusion and coastal areas \cite{Erban2014b,Alfarrah2018}.  The first two are most relevant to this proposal.
+Estimates suggest that half the GW extracted for irrigation exceeds aquifer recharge and is hence unsustainable \cite{Rost2008,Vorosmarty2000}. In particular, areas with persistent water stress and large aquifer systems have increased their reliance on GW and now experience sustained GW depletion \cite{Hanasaki2008,Wada2010,Scanlon2012}. The UN Human Development Report estimates that over 1.4 billion people currently live in areas where GW depletion poses a \emph{grave threat to agricultural systems, food security and livelihoods} \cite{UNESCO2012}. The negative consequences of the GW depletion include: increased energy required for water production \cite{Scanlon2012,Narayanamoorthy2015}; irreversible aquifer compaction and loss of GW storage (Figure~\ref{fig:GW Intro}\emph{b}); degradation of GW groundwater dependent ecosystems and loss of ecosystem services \cite{Klove2014,Doody2017}; flooding and saltwater intrusion and coastal areas \cite{Erban2014b,Alfarrah2018}.  The first two are most relevant to this proposal.
 
 % Groundwater depletion and energy for food production
 \emph{The relationship between water and energy is reciprocal} \cite{UNESCO2012}. Groundwater extraction accounts for \mytilde8\% of energy production globally and up to 40\% of the energy produced in developing countries \cite{WorldEconomicForum2011}.
 As GW depletion progresses the energy intensity of irrigation increases, because the deeper wells have to be drilled and GW has to be raised from grater depth. In extreme cases, failing GW supplies have to be supplemented by imports of surface water transported over large distances. This increases the cost of irrigation will have adverse effects on both farmers and consumers, in particular in the developing world \cite{Narayanamoorthy2015}.
 
 % GW storage to limit risk
-The permanent loss of GW storage in depleted aquifers also increases the vulnerability of water supplies and food production to climate change. In many arid regions climate change is expected to result in reduced and more variable rainfall. Due to the relatively large volumes of water stored underground, most aquifers have a considerable buffer capacity, which keeps their water available for withdrawal even during very long periods without rainfall  \cite{UNESCO2012}. Maintaining GW storage by preventing overpumping therefore plays a crucial role in climate change and adaptation.
+The permanent loss of GW storage in depleted aquifers also increases the vulnerability of water supplies and food production to climate change \cite{Taylor2013}. In many arid regions climate change is expected to result in reduced and more variable rainfall. Due to the relatively large volumes of water stored underground, most aquifers have a considerable buffer capacity, which keeps their water available for withdrawal even during very long periods without rainfall  \cite{UNESCO2012}. Maintaining GW storage by preventing overpumping therefore plays a crucial role in our adaptation to climate change.
 
 \subsection{Role of GW resource management at the Food-Energy-Water (FEW) Nexus}
 % This is Really what INFEWS wants to fund!
 The increasing extraction of GW for irrigation around the globe is a key element of the FEW-nexus that determines global food security, requires significant fraction of global energy and plays a crucial role in climate change adaptation.  The UN Human Development Report therefore concludes that careful GW management \emph{can make a significant contribution to meeting the demand for water in the future and to adapting to climate change} \cite{UNESCO2012}. The report defines \emph{water management} as managing the resource, managing water services, and managing the trade-offs needed to balance supply and demand. 
 
-In the twenty-first century, water management has moved from hard solutions favoring large infrastructure projects to a range of softer measures based on institutional reform, incentives and behavioural change that aims to increase resilience and decrease vulnerability \cite{Wolff2002,Brooks2011}. In this soft path to water management, \textbf{the role of water managers is to inform the decisions taken by others} and to provide forecasting and modelling to facilitate more accurate risk assessment \cite{UNESCO2012}. 
+In the twenty-first century, water management has moved from hard solutions favoring large infrastructure projects to a range of softer measures based on institutional reform, incentives and behavioural change that aims to increase resilience and decrease vulnerability \cite{Wolff2002,Brooks2011}. In this soft path to water management, \textbf{the role of water managers is to inform the decisions taken by others} and to provide forecasting and modelling to facilitate more accurate risk assessment \cite{UNESCO2012}. In herent in the soft path is  an \textbf{adaptive management} approach where improvements are made gradually in a monitoring and assessment cycle.
 
-Here we focus on \textbf{water resource management}, which includes water allocation, assessment and pollution control; the protection of water-related ecosystems and water quality; natural and man-made infrastructure for the redistribution and storage of these resources; and groundwater recharge. This proposal is focused on GW resource management, because GW is till the least understood component of the hydrologic cycle \cite{Re2015} and introduces significant uncertainty and risk into any water management strategy. A recent expert survey concluded that \emph{solutions for the monitoring and management ... of .. withdrawals from aquifers to ensure they do not exceed the mean recharge rates} are unlikely to occur in the short term. 
+Here we focus on \textbf{water resource management}, which includes water allocation, assessment and pollution control; the protection of water-related ecosystems and water quality; redistribution and storage of these resources; and groundwater recharge. This proposal is focused on GW resource management, because GW is till the least understood component of the hydrologic cycle \cite{Re2015} and introduces significant uncertainty and risk into any integrated water management strategy. The challenge of GW resource management is highlighted in a recent expert survey, which concluded that \emph{solutions for the monitoring and management ... of .. withdrawals from aquifers to ensure they do not exceed the mean recharge rates} are unlikely to occur in the short term. 
+
+% Water management is underpinned by levels of uncertainty. Adapting to these uncertainties and developing strategies that mitigate against emerging risks makes water management policies, institutions and regulations more resilient. Adaptive water management extends to IWRM by focusing on a more flexible management process to address uncertainty.
 
 % 5.1.2 Integrated water resources management IWRM is defined as a process that ‘promotes the coor- dinated development and management of water, land and related resources in order to maximize the result- ant economic and social welfare in an equitable man- ner without compromising the sustainability of vital ecosystems’ (GWP-TAC, 2000, p. 22).
 
 
-\subsection{Uncertainty and risk in GW resource management}
-The dominant natural sources of uncertainty in GW resource management stem from the sparse sampling of aquifers and increasing climate variability and change. The confluence of these two factors introduces increasing uncertainty that poses unique challenges for decision-makers and must be addressed by risk management  \cite{Shaw2010}. It is therefore essential that any GW resource management strategy acknowledges these an uncertainties and integrates them into  
+\subsection{Climate change, increasing uncertainty and adaptive GW resource management}\label{sec:adaptive}
+The dominant natural sources of uncertainty in GW resource management stem from the sparse sampling of aquifers and increasing climate variability and change. The confluence of these two factors introduces increasing uncertainty that poses unique challenges for decision-makers and must be addressed by risk management \cite{Shaw2010}. It is therefore essential that any GW resource management strategy acknowledges these uncertainties and integrates them into ... \note{say something smart and to the point!} 
 
-The dominant uncertainty in the predictions of any GW model is the insufficient characterization of the aquifer properties. These properties, such as its \textbf{permeability} which governs the flow of GW and \textbf{specific storage} which determine the volume of GW, can change by several orders of magnitude and display lateral variability on all scales. In principle, these could be determined if sufficiently rich data-set were available. 
+The dominant uncertainty in the predictions of any GW model is the insufficient characterization of the aquifer properties \cite{Eaton2006,Bohling2010,Oliver2011}. These properties, such as its \textbf{permeability} which governs the flow of GW and \textbf{specific storage} which determine the volume of GW, can change by several orders of magnitude and display lateral variability on all scales. In principle, the uncertainty in these parameters could be quantified with Bayesian inference, if sufficiently rich data-set were available \cite{Carrera1986a,Carrera1986b,McLaughlin1996}. However, classic aquifer characterization based on sparse measurements at wells has often not been sufficient to significantly reduce the uncertainty in model predictions \cite{Bohling2010}. This uncertainty is exacerbated by increasing climate variability due to climate change. As water scarcity increases GW depletion the aquifers are driven to new states that are not informed by past data and experience. 
+It will therefore \textbf{no longer possible to use today’s science, based on yesterday’s experience, to predict the needs of the future} \cite{Turton2007}. \note{(It sounds corny I know!)}
 
+Hence there is a need to improve GW monitoring and integrate new data into GW models to reduce the uncertainty in predictions and hence to facilitate decision-making. The need for adaptive management requires that new data is continuously integrated into GW models to update projections of resource allocation and the associated uncertainties. Optimally, the data also provide a way to track the effect of management changes on the GW system to assess their success.
 
-However, classic aquifer characterization based on sparse measurements at wells has often not been sufficient to significantly reduce the uncertainty in model predictions \cite{Bohling2010}. This uncertainty is exacerbated by increasing climate variability due to climate change. As water scarcity increases GW depletion the aquifers are driven to new states that are not informed by past experience. It will therefore no longer possible to use today’s science, based on yesterday’s experience, to predict the needs of the future \cite{Turton2007}.
+% integration between data acquisition, assimilation into models and 
+% for com- plex data, hard-wired into feedback loops, specifically for managing the incremental changes needed in the various systems including the means of tracking those changes (Stakhiv and Pietrowsky, 2009).
 
-However, increasing rainfall variability due to climate change 
+% \subsection{Adpative }
 
-and are poorly  known due to the sparsity of both direct and indirect observations. Traditional aquifer characterization based on localized wells leads to large uncertainties in the assessment of the amount of water available as well as the response to the aquifer to fluid extraction and injection. 
+% One of the most direct ways of reducing uncertainty is to generate new knowledge or understanding of conditions governing water availability and quality in the present and in the future. Data collection, analytical capacity and predictive ability are all required to reduce uncertainty and therefore to facilitate decision making about allocations, uses, mobilization and treatment. While the risk to water is not reduced, it is better understood.
 
+% Decision-making that embraces uncertainty and risk
 
+% There is a need for increasingly sophisticated monitor- ing systems to source and integrate the necessary data. This adds additional stresses to the overall decision- making process. 
 
+% Traditionally, analysis of past climate coupled with stochastic analysis has provided a fairly reliable basis for examining the water cycle with its hydrological extremes. Historical.
 
+% Any study of strategy, planning, design, operation and management of water resources systems must take as its basis variability of quantity and quality in water sources and supply systems. 
 
-adaptive and flexible practices that can increase the resilience of water systems
-
-responding to uncertainty through risk management
-
-One of the most direct ways of reducing uncertainty is to generate new knowledge or understanding of conditions governing water availability and quality in the present and in the future. Data collection, analytical capacity and predictive ability are all required to reduce uncertainty and therefore to facilitate decision making about allocations, uses, mobilization and treatment. While the risk to water is not reduced, it is better understood.
-Given
-
-Traditionally, analysis of past climate coupled with stochastic analysis has provided a fairly reliable basis for examining the water cycle with its hydrological extremes. Historical.
-
-Any study of strategy, planning, design, operation and management of water resources systems must take as its basis variability of quantity and quality in water sources and supply systems. 
-
-
-
-\subsection{Challenges and opportunities in aquifer characterization}
-
-However, GW is still the least understood component of the hydrologic cycle \cite{Re2015} and introduces significant uncertainty and risk into any water management strategy. The uncertainty in any prediction of GW availability is largely due to the geological complexity of aquifers.  This leads to large variations in aquifer properties that are only sparsely sampled at wells. The predictive power of GW models is therefore often too limited to allow model-predictive decision making.
-
-\subsection{Outline of the proposal}
-Here we focus on the natural causes of uncertainty and risk (as opposed to social and political causes) in GW management and propose to develop a \textbf{next generation model-predictive framework for decision support in groundwater management}. This framework will be applied to a testbed provided by GW dependent irrigation in the San Louis Valley (SLV), CO. We have chose this example, because many of the challenges faced in the SLV are symptomatic for the global challenge of sustainable GW management.
-
-We begin with an outline of the concrete challenges in the SLV 
-First we highlight the current challenges in aquifer characterization (\S~\ref{sec:aquifer characterization}) and outline why we think new sources of data allow for significant improvements in model predictions. .... blah, blah, blah
-
-\subsection{Challenges in GW management}\label{sec:aquifer characterization}
-
-
-% Aquifer heterogeneity
- Aquifer properties, such as its permeability and storativity, have large spatial variations and are poorly  known due to the sparsity of both direct and indirect observations. Traditional aquifer characterization based on localized wells leads to large uncertainties in the assessment of the amount of water available as well as the response to the aquifer to fluid extraction and injection. 
-
-The basic scientific challenge in groundwater management therefore is to improve the aquifer characterization on the scale of interest to a particular problem. Hydraulic tomography and various near-surface geophysical techniques have dramatically improved the aquifer characterization on small scales. In contrast, it is still challenging to characterize aquifers on the larger basin-wide scales required for groundwater management in agricultural applications. 
-
-\subsection{Geodetic aquifer characterization}
+\subsection{Opportunities in geodetic aquifer characterization}
 Fortunately, remote sensing and geodetic measurements have begun to provide a wealth of new, spatially-distributed time-series data that promise to significantly improve the characterization of the subsurface beyond what can be provided by well data alone and have been identified as the most valuable groundwater monitoring technologies. These include total water storage change from the Gravity Recovery and Climate Experiment (GRACE) and the GRACE Follow-on (GRACE-FO) mission. In particular, surface deformation data derived from interferometric synthetic aperture radar (InSAR) (1992-present) can be used for characterizing groundwater levels and storage properties in confined aquifers, the critical metric needed for effective groundwater management. While spaceborne Earth-observing missions have provided large amounts of data that can be used to study freshwater resources, these data have been greatly under-utilized in operational water management practices. A grand challenge we need to address today is how to assimilate satellite and in-situ data into quantitative, predictive and computational groundwater models to better assist decision making.
-
-% , commonly the least well characterized element of the groundwater system due to the lack of direct observations
-
-% \subsection{Challenge}
-% The challenge, then, is how to characterize the aquifer properties sufficiently to allow planning of fluid injection and injection on a timescale required to avoid adverse effects, such as aquifer compaction or induced seismicity, with an acceptable level of uncertainty. 
-
-% W
-
-
-% It is therefore necessary to design optimal well injection/extraction strategies 
-
-% Meeting this challenge successfully requires
-% \begin{enumerate}
-%     \item Additional sources of data that allow better aquifer characterization.
-%     \item Efficient and scalable integration of this data into groundwater models.
-%     \item 
-% \end{enumerate}}
 
 In recent years, remote sensing and geodetic measurements have begun to provide a wealth of new, spatially-distributed time-series data on surface deformation in response to fluid injection (Figure \ref{fig:InSAR}). These observations promise to significantly improve
 the characterization of the subsurface beyond what can be provided by
 well data alone and have been identified as the most valuable monitoring technology for large scale GCS \cite{Mathieson2010}.
-% and the monitoring of pressure transients due to fluid injection and
-% production.
-Driven  by these recent developments, we propose a program of
-research to 
-% The overall goal of our proposed research is then to 
-(1) integrate this satellite and well data with coupled poromechanics
-models of subsurface deformation and flow by solving the {\bf inverse
-  problem} for unknown subsurface properties; (2) use the resulting
-% inferred 
-poromechanics models to design {\bf optimal control} strategies for
-the injection rates that optimally and sustainably manage \CO2
-storage while minimizing seismic risk. {\em It is essential that this poromechanics-based
-  inversion/control framework take into account uncertainties at every
-  stage, since both the observational data and the models are
-  uncertain.} However, solving stochastic inverse/optimal control
-problems for large-scale partial differential equation (PDE) models
-such as those of poromechanics is intractable using current methods,
-which suffer from the ``curse of dimensionality.''  Thus, our
-challenge is to overcome these barriers by developing scalable methods
-and algorithms that exploit the problem structure to {\em reduce
-  effective dimensionality}. Overcoming the scalability problem by
-extracting low-dimensional structure from high-dimensional space is
-essential if we are to have any hope of optimally and sustainably
-managing natural and human resources based on predictive physics-based
-models, which is a central goal in the emerging field of computational
-sustainability \cite{MillettEstrin12}.
 
+% \subsection{Challenges and opportunities in aquifer characterization}
 
-\subsection{Aim of this proposal: Geodetic decision support of groundwater management}
+% However, GW is still the least understood component of the hydrologic cycle \cite{Re2015} and introduces significant uncertainty and risk into any water management strategy. The uncertainty in any prediction of GW availability is largely due to the geological complexity of aquifers.  This leads to large variations in aquifer properties that are only sparsely sampled at wells. The predictive power of GW models is therefore often too limited to allow model-predictive decision making.
+
+\subsection{Aim of this proposal}
+Driven  by these recent developments, we propose to develop a \textbf{Bayesian poromechanics-based inversion/control framework for GW resource management}. This framework takes into account uncertainties at every stage and aims to reduce uncertainty in predictions though the \textbf{assimilation geodetic observations}.  Using this approach we aim to produce actionable forecasts of head levels and projections of sustainable well extraction rates with a lead time of 30 to 180 days. Continuous and automatic assimilation of new data will update the forecast and allow the deployment of adaptive management strategies. 
+
+Achieving this requires the integration of the following three components
+\begin{enumerate}
+    \item Automated processing of InSAR data to produce estimates of land surface elevations.
+    \item Integrate this satellite and well data with coupled poromechanics models of subsurface deformation and flow by solving the {\bf inverse problem} for unknown subsurface properties and aquifer recharge.
+    \item Use the resulting inferred poromechanics models to design {\bf optimal control} strategies for GW extraction that maximize the water availability while preventing aquifer compaction. 
+\end{enumerate}
+
+To test if the geodetic data is sufficiently rich and poromechanic models are sufficiently predictive to warrant model-predictive decision making this framework will be applied to a testbed provided by GW dependent irrigation in the San Louis Valley (SLV), CO. We have chose this example, because many of the challenges faced in the SLV are symptomatic for the global challenge of sustainable GW management.
 
 
 
-The central goal of the proposed research is to develop a decision-support system for groundwater management that will provide forecasts of head levels in deep confined aquifers and optimal well injection/extraction rates that avoid adverse effects, such as aquifer compaction or induced seismicity, with an acceptable level of uncertainty. 
+\section{Background Significance, and Outstanding Challenges}
 
-This decision-support system will integrate estimates of hydraulic head obtained from interferometric synthetic aperture radar (InSAR) subsidence images, with other forms of remote sensing and hydraulic data, to forecast head levels with a lead time of 30 to 180 days, updated on a weekly basis. 
-
-
-The challenge, then, is how to characterize the aquifer properties sufficiently to allow planning of fluid injection and injection on a timescale required to avoid adverse effects, such as aquifer compaction or induced seismicity, with an acceptable level of uncertainty. 
-
-This will inform decisions related to the use of groundwater, allowing time to take actions that impact the withdrawal of water from the aquifer or the recharge of the aquifer. 
-
-Here we argue that is is the job of groundwater management is to maintain the health of the aquifer and to provide farmers (other stake holders) with estimates sustainable daily water extraction rates. These rates should be updated continuously as new data become available. It is the stake holders responsibility to decide how to use his/her water allowance to maximize profits.\\
-
-We also aim to answer the question: \emph{Is the avialbale data sufficiently rich and the model sufficiently predictive to warrant model-predictive decision making?}
-
-The management of water is not merely a technical issue; it requires a mix of measures including changes in policies, prices and other incentives, as well as infrastructure and physical installations. Integrated water resources management (IWRM) focuses on the necessary integration of water management across sectors, policies and institutions \cite{UNESCO2012}.
-
-Water management is underpinned by levels of uncertainty. Adapting to these uncertainties and developing strategies that mitigate against emerging risks makes water management policies, institutions and regulations more resilient. Adaptive water management extends to IWRM by focusing on a more flexible management process to address uncertainty.
-
-Broadly speaking, these can be divided into three categories: managing the resource, managing water services, and managing the trade-offs needed to balance supply and demand. Water resource management is about managing water found in rivers, lakes and groundwater. This includes water allocation, assessment and pollution control; the protection of water-related ecosystems and water qual- ity; natural and man-made infrastructure for the redistri- bution and storage of these resources; and groundwater recharge. Water
-
-sustain- ability of water resources has in many locations been overwhelmed by the continually expanding human ac- tivities associated with socio-economic development, including agricultural production, urbanization and in- dustrialization. Many of these demands are naturally in conflict, raising the need to manage trade-offs. While
+However, solving stochastic inverse/optimal control problems for large-scale partial differential equation (PDE) models such as those of poromechanics is intractable using current methods, which suffer from the ``curse of dimensionality.''  Thus, our challenge is to overcome these barriers by developing scalable methods and algorithms that exploit the problem structure to {\em reduce effective dimensionality}. Overcoming the scalability problem by extracting low-dimensional structure from high-dimensional space is
+essential if we are to have any hope of optimally and sustainably managing natural and human resources based on predictive physics-based models, which is a central goal in the emerging field of computational
+sustainability \cite{NRC2012}.
 
 \subsection{Testbed I at Food-Water Nexus: Irrigation in the San Luis Valley, CO }\label{sec:SLV}
 The San Luis Valley (SLV) is located in the northern half of the Rio Grande Basin, bounded to the east by the Sangre De Cristo Range and to the west by the San Juan Mountains as shown in Figure \ref{fig:SLV} \citep{SLV_report}. The valley fill consists of interbedded deposits of sand, clay, gravel, and some layers of volcanic rocks, underlain by volcanic basement. The Rio Grande flows through the valley but does not drain the northern portion, which is a closed drainage basin. The southwestern portion of the Valley contains the Conejos and Alamosa River Valleys, which are adjacent to a series of mesas and eroded hills called San Luis Hills.
@@ -309,7 +245,7 @@ We propose to develop a prototype system for application in the San Luis Valley 
 
 
 
-\section{Background Significance, and Outstanding Challenges}
+
 \subsection{Water Balance Model}
 Understanding the availability of freshwater resources requires measurement of key components in the freshwater cycle shown in Figure \ref{fig:watercycle}. Here we consider the surface water and boundary layer as a single element, denoted surface water. The net freshwater fluxes can be approximated by the following equation:
 \begin{align}
