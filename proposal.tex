@@ -176,7 +176,7 @@ Here we focus on \textbf{water resource management}, which includes water alloca
 % 5.1.2 Integrated water resources management IWRM is defined as a process that ‘promotes the coor- dinated development and management of water, land and related resources in order to maximize the result- ant economic and social welfare in an equitable man- ner without compromising the sustainability of vital ecosystems’ (GWP-TAC, 2000, p. 22).
 
 
-\subsection{Climate change, increasing uncertainty and adaptive GW resource management}\label{sec:adaptive}
+\subsection{Climate change, increasing uncertainty and adaptive GW resource management}\label{sec:intro adaptive}
 The dominant natural sources of uncertainty in GW resource management stem from the sparse sampling of aquifers and increasing climate variability and change. The confluence of these two factors introduces increasing uncertainty that poses unique challenges for decision-makers and must be addressed by risk management \cite{Shaw2010}. It is therefore essential that any GW resource management strategy acknowledges these uncertainties and integrates them into ... \note{say something smart and to the point!} 
 
 The dominant uncertainty in the predictions of any GW model is the insufficient characterization of the aquifer properties \cite{Eaton2006,Bohling2010,Oliver2011}. These properties, such as its \textbf{permeability} which governs the flow of GW and \textbf{specific storage} which determine the volume of GW, can change by several orders of magnitude and display lateral variability on all scales. In principle, the uncertainty in these parameters could be quantified with Bayesian inference, if sufficiently rich data-set were available \cite{Carrera1986a,Carrera1986b,McLaughlin1996}. However, classic aquifer characterization based on sparse measurements at wells has often not been sufficient to significantly reduce the uncertainty in model predictions \cite{Bohling2010}. This uncertainty is exacerbated by increasing climate variability due to climate change. As water scarcity increases GW depletion the aquifers are driven to new states that are not informed by past data and experience. 
@@ -229,62 +229,42 @@ To test if the geodetic data is sufficiently rich and poromechanic models are su
 First we describe the application where the proposed framework will be tested in \S\,\ref{sec:SLV}, because this sets the objective of the inversion/control problem that will subsequently be addressed. This is followed by brief outlines to poromechanic forward model in \S\,\ref{sec:poromech}, the Bayesian inverse model in \S\,\ref{sec:bayesian}, and optimal control under uncertainty \S\,\ref{sec:control}.
 \note{something about the outstanding challenge}
 
-
 \subsection{Testbed: GW supported irrigation in the San Luis Valley, CO}\label{sec:SLV}
-The San Luis Valley (SLV) is located in the northern half of the Rio Grande Basin, bounded to the east by the Sangre De Cristo Range and to the west by the San Juan Mountains as shown in Figure \ref{fig:SLV}\emph{a} \citep{SLV_report}. The valley fill consists of interbedded deposits of sand, clay, gravel, and some layers of volcanic rocks, underlain by volcanic basement (Figure~\ref{fig:SLV}\emph{b}). The Rio Grande flows through the valley but does not drain the northern portion, which is a closed drainage basin. The southwestern portion of the Valley contains the Conejos and Alamosa River Valleys, which are adjacent to a series of mesas and eroded hills called San Luis Hills.
-
 \begin{figure}
 \noindent\includegraphics[width=1\textwidth]{Figures/Figure2.pdf}
 \caption{\textbf{a}) Geographic boundaries (defined by the white lines) and the outline of the San Luis Valley (defined by the purple line). The red line is the state boundary between Colorado and New Mexico. The top left panel illustrates the location of the San Luis Valley in the state of Colorado. Black line indicates the location of the cross-section in panel \emph{b}. \emph{b}) Cross-section along the valley between A and A' in panel \emph{a}. \textbf{c}) Location of 564 GW extraction wells in layer 3 (see panel \emph{b}), the shallowest portion of the confined aquifer  \textbf{d}) Location of 100 monitoring wells in the confined aquifer with time-series data.}
 \label{fig:SLV}
 \end{figure}
+% Geography
+The San Luis Valley (SLV) is located in the northern half of the Rio Grande Basin, bounded to the east by the Sangre De Cristo Range and to the west by the San Juan Mountains as shown in Figure \ref{fig:SLV}\emph{a} \citep{SLV_report}. The Rio Grande flows through the valley but does not drain the northern portion, which is a closed drainage basin. The southwestern portion of the Valley contains the Conejos and Alamosa River Valleys, which are adjacent to a series of mesas and eroded hills called San Luis Hills.
 
-Groundwater extraction occurs mainly in the Closed Basin and the Conejos and Alamosa River Valleys (Figure~\ref{fig:SLV}\emph{c}), and is essential for supporting the vibrant agricultural economy of this high-altitude desert-climate valley. Over much of the valley, the top 50 to 130 feet of sediments constitutes an upper unconfined aquifer overlying a larger confined aquifer (Figure~\ref{fig:SLV}\emph{b}). While the unconfined aquifer is still the principal source of GW in the area, there is considerable interest in increased withdrawal of GW from the confined aquifer.  \textcolor{red}{The Colorado legislature has directed that in order to continue use of the confined aquifer the SLV managers must maintain head levels in the aquifer at 1978-2000 levels.} The Rio Grande Decision Support System (RGDSS) is a MODFLOW model of the SLV that is used to predict head levels in the confined aquifer  \citep{RGDSS}.  Head data over the active area of water use are sparse in 1978, but grow more robust to the present although the monitoring data points are unequally distributed (Figure~\ref{fig:SLV}\emph{d}). The lack of historical and well-distributed head data impacts the accuracy of the modeling.  There is great interest in the ability to assimilate satellite and in-situ data into quantitative, predictive and computational groundwater flow models to better assist decision making.
+% Water situation
+To support the vibrant agricultural economy in the high-altitude desert-climate of the SLV, irrigation relies heavily on GW extraction.  The aquifers in the valley are essential to buffer the rapid release of snow melt from the surrounding mountains in the spring and store it into the summer when it is needed for irrigation. The valley fill contains a shallow unconfined aquifer that is separated from a deeper confined aquifer by a thick aquitard (Figure~\ref{fig:SLV}\emph{b}). Both aquifers a recharged in the spring by snow melt that enters into the subsurface in alluvial fans. Extraction of GW is concentrated mainly in Closed Basin and the Conejos and Alamosa River Valleys (Figure~\ref{fig:SLV}\emph{c}). While the shallow unconfined aquifer is currently still the main source of GW, extraction from the confined aquifer is increasing rapidly. In particular, during drought years increased GW extraction from the confined aquifer has lead to GW depletion and threatens irreversible aquifer compaction and permanent loss of GW storage. Decreased storage increases water scarcity in drought years and threatens a vicious cycle of increasing GW extraction and subsequent aquifer compaction.
 
-We propose to develop a prototype system for application in the San Luis Valley of Colorado. Our modeling approach builds a predictive model through the analysis of $>$20 years (1992-present) of in-situ and satellite data to determine the spatial and temporal links between hydraulic head and other principle components of the basin-scale water cycle - precipitation, run-off, evapotranspiration, surface water, soil moisture, and groundwater pumping; the predictive model is continually updated with the addition of newly acquired data. Because we cannot measure head directly except at sparse well locations, we will use recently-developed InSAR methods deriving subsidence over time to obtain temporally and spatially dense head estimates.  Once calibrated with local well-based measurements, these observations will be integrated using the predictive model to predict future head levels. In developing the predictive model to forecast head, the study area will be expanded beyond the SLV to the basin headwaters in the San Juan and Sangre De Christo mountains. We aim to discover a reliable predictive link between snow accumulation and melt and head changes in the confined aquifer.  While evidence suggests that the snowpack at lower elevations is the primary source of recharge to the confined aquifer, there is not a solid quantitative basis for making reliable predictions of head changes in the aquifer.  Such a predictive capability would be extremely valuable and would allow Colorado water managers to take proactive measures if low heads were predicted.  For example, fields could be fallowed, or water from the Rio Grande could be used to recharge selected areas of the aquifer.
+% Limitations on GW extraction
+To prevent continued GW depletion and loss of aquifer storage  the Colorado Legislature has directed that \textbf{GW heads in the confined aquifer must be maintained at 1978-2000 levels} \citep{Rules}. Currently, the management of GW resources in the SLV is based on the Rio Grand Decision Support System (RGDSS) \citep{RGDSS}. The RGDSS combines a hydrogeologic database with MODFLOW model for GW flow to predict head levels in the confined aquifer.
 
-% Here is a little more infomoation of the SLV groundwater aquifers, some cross-sections of the hydrogeologic layers acress the SLV are also available
-Groundwater pumping occurs mainly in the Closed Basin and the Conejos and Alamosa River Valleys, and is essential for supporting the vibrant agricultural economy of this high-altitude desert-climate valley. Currently, the Rio Grand Decision Support System (RGDSS), which includes a hydrogeologic database and a MODFLOW finite-difference groundwater flow model, is being used to quantitatively evaluate and manage the groundwater resources in the SLV. The conceptual RGDSS hydrogeologic model of the SLV consists of five distinct hydrogeologic layers \citep{RGDSS}. Here we summarize the available hydrogeologic information of the SLV aquifer as described in \textcolor{red}{Judge Kuenhold's decision in the confined aquifer case \citep{Rules}}. Over much of the valley, the top 15 to 40 meters (50 to 130 feet) of the sediment thickness (layer 1) constitutes an upper unconfined aquifer. A confining layer known as an aquitard (layer 2) progresses from solid clay near the central axis of the SLV (generally along Hwy 17 from Moffat to Alamosa) to clay lenses interspersed with sands. The sand to clay ratio generally increases outward from the central axis and the aquitard thickness diminishes at the edge of the SLV. Layers 3-5 are the confined aquifer system. Layer 3 is generally interpreted to be the most productive portion of the confined aquifer system. In the northern portion of the SLV, layer 3 contains mainly sand, although clay layers do appear. In the southern portion of the SLV, layer 3 is composed of the Hinsdale and Servilleta Basalt and sand. Layer 4 is a mix of sand and gravel with as much as 50 percent clay in most areas of the SLV. The confined aquifer becomes more clay rich with depth and layer 5 is generally not considered to be a productive aquifer due to its low hydraulic conductivity.
+% Challenges
+However, the biggest challenges to successful model-predictive decision making based on the RGDSS is the unequal distribution of monitoring data (Figure~\ref{fig:SLV}\emph{d}) and the lack of historical time series of head variations. This leads to large uncertainties in the spatial variation of crucial model parameters such an the specific storage and the permeability of the aquifer. These uncertainties are then reflected in the uncertainty of the model predictions, in particular under drought conditions when then decisions about water allocation are most important. Hence there is great interest in the improvement of the predictive capabilities of the GW model though the assimilation of additional data.
+% ability to assimilate satellite and in-situ data into quantitative, predictive and computational groundwater flow models to better assist decision making.
 
-\begin{figure}
-\noindent\includegraphics[width=0.9\textwidth]{Figures/SLVaquifers.png}
-\caption{A schematic showing the variable geology of the hydrogeologic layers from north to south in the San Luis Valley (J. Reeeves, 2013).}
-\label{fig:slv-aquifers}
-\end{figure}
+The SLV is therefore a type-example of both the importance and the challenges of GW resource management in an important agricultural region that faces increased water scarcity due to climate change, as layed out in \S\,\ref{sec:intro adaptive}. Further the availability of high quality InSAR data (\S\,\ref{sec:previous InSAR}) make the SLV is an excellent testbed for the assimilation of geodetic data into groundwater models proposed in \S\,\ref{sec:proposed inverse}.  Finally, the legislative requirement to maintain head levels above a critical value provides a natural and challenging constraint for the optimal design of the GW well extraction rates proposed in \S\,\ref{sec:proposed optimal}.
 
 
-\subsubsection{Water Balance Model}
-Understanding the availability of freshwater resources requires measurement of key components in the freshwater cycle shown in Figure \ref{fig:watercycle}. Here we consider the surface water and boundary layer as a single element, denoted surface water. The net freshwater fluxes can be approximated by the following equation:
-\begin{align}
-\Delta SM +\Delta S^s +\Delta S^u + \Delta S^c = P-ET-Q
-\label{eq:waterBalance}  
-\end{align}
-where $P$ is precipitation, $ET$ is evapotranspiration, $Q$ is the river runoff. $\Delta SM$ is the change in soil moisture, $\Delta S^s$ is the change in surface water storage in rivers and lakes, $\Delta S^u$ is the change in unconfined aquifer storage, and $\Delta S^c$  is the change in confined aquifer storage.
 
-\begin{figure}
-\noindent\includegraphics[width=0.6\textwidth]{Figures/watercycle.pdf}
-\caption{Water balance model. In this model surface water and soil moisture are combined into the “surface water” box.  The terms marked in blue are the key elements of the water balance equation; their interrelationships are discussed in Equation \ref{eq:waterBalance}.}
-\label{fig:watercycle}
-\end{figure}
 
-The change in confined aquifer storage $\Delta S^c$ can be further expressed as:
-\begin{align}
-\Delta S^c = R - W
-\label{eq:confinedStorage}  
-\end{align}
-where $W$ is the withdrawal from the confined aquifer and R is the recharge. Given a \textcolor{red}{minimum safe storage level for the confined aquifer} $\Delta S^{C-min}$, we can manage the storage of the confined aquifer by scheduling withdrawals such that withdrawal ceases when (in our convention withdrawal leads to negative $\Delta S^c$):
-\begin{align}
-\Delta S^c = P-ET-Q-\Delta SM - \Delta S^s - \Delta S^u = R-W < \Delta S^{C-min}
-\label{eq:safelimit}  
-\end{align}
-Note that $\Delta S^c$  can be considered as a source term describing the forcing of water into the confined aquifer.  We therefore introduce an additional notation to emphasize its role as a source and its explicit dependence on both space and time:
-\begin{align}
-U(x;t) = \Delta S^c
-\label{eq:force}  
-\end{align}
+% % Hydrogeology
+% The valley fill consists of interbedded deposits of sand, clay, gravel, and some layers of volcanic rocks, underlain by volcanic basement (Figure~\ref{fig:SLV}\emph{b}).  Over much of the valley, the top 50 to 130 feet of sediments constitutes an upper unconfined aquifer overlying a larger confined aquifer (Figure~\ref{fig:SLV}\emph{b}).
 
-% \subsection{Surface deformation due to Subsurface Hydrology}
-% Anthropogenic land subsidence associated with withdrawal of fluids from the subsurface due to groundwater extraction and the production of hydrocarbons has been recognized for decades \citep{Poland1969}, for recent reviews, see Gambolati et al. \cite{Gambolati2005} and Galloway and Burbey \cite{Galloway2011a}. While subsidence is generally slow, the rates of the induced land subsidence can locally reach several centimeters per year and cumulative subsidence over several decades of fluid withdrawal can reach tens of meters in severe cases, such as the rapid compaction of lacustrine sediments beneath Mexico City [Ortega-Guerrero et al., 2009; Osmanoglu et al., 2011]. Anthropogenic land uplift is associated with the injection of fluids for enhanced oil production, natural gas and carbon dioxide storage, aquifer storage and recharge, and the injection of industrial waste [Teatini et al., 2011]. Cumulative land uplift due to fluid injection is on the order of several centimeters and is therefore often not recognized, unless it is systematically monitored. In both cases—subsidence and land uplift—the lateral extent of the deformation is large and we will refer to it below as (regional) surface deformation.
+% Here we summarize the available hydrogeologic information of the SLV aquifer as described in \textcolor{red}{Judge Kuenhold's decision in the confined aquifer case \citep{Rules}}. Over much of the valley, the top 15 to 40 meters (50 to 130 feet) of the sediment thickness (layer 1) constitutes an upper unconfined aquifer. A confining layer known as an aquitard (layer 2) progresses from solid clay near the central axis of the SLV (generally along Hwy 17 from Moffat to Alamosa) to clay lenses interspersed with sands. The sand to clay ratio generally increases outward from the central axis and the aquitard thickness diminishes at the edge of the SLV. Layers 3-5 are the confined aquifer system. Layer 3 is generally interpreted to be the most productive portion of the confined aquifer system. In the northern portion of the SLV, layer 3 contains mainly sand, although clay layers do appear. In the southern portion of the SLV, layer 3 is composed of the Hinsdale and Servilleta Basalt and sand. Layer 4 is a mix of sand and gravel with as much as 50 percent clay in most areas of the SLV. The confined aquifer becomes more clay rich with depth and layer 5 is generally not considered to be a productive aquifer due to its low hydraulic conductivity.
+
+
+
+
+
+
+
+
 
 % \subsection{Geodetic surface deformation measurements}
 % The systematic measurement and monitoring of the evolution of regional surface deformation is challenging due to the large spatial scales, the need for stable geodetic reference marks, and repeated surveys \citep{Galloway2011a}. In the last decades, ground-based geodetic surveys have been complemented by the global positioning system (GPS) and by remotely sensed geodetic surveys such as airborne light detection and ranging (LiDAR) as well as satellite-based differential interferometric synthetic aperture radar (InSAR) \citep{Galloway1998,Burgmann2000} and Persistent/Permanent Scatterer interferometry (PS-InSAR) \citep{Ferretti2001}. Satellite InSAR and PS-InSAR are ideally suited for the measurement of surface deformation associated with fluid injection or extraction, because it allows the mapping of areas as large as 10,000 km2 while a single picture element (pixel) may have a resolution of up to 5 m [Hanssen, 2001].Within a pixel, InSAR can detect vertical displacements on the order of 10 mm or less and PS-InSAR may allow the detection of displacements with an accuracy of 1–2 mm \citep{Ferretti2001}. In the last decade, these techniques have been used to generate detailed time series images of regional surface deformation that have greatly advanced our understanding of the sub- surface. 
@@ -294,9 +274,7 @@ U(x;t) = \Delta S^c
 % able and often anisotropic, but the permeability often has the strongest spatial variation and usually dominates the flow field. The characterization of the permeability field is therefore key to successful prediction of flow and trans- port processes in the subsurface. In practice, the information available for this characterization is sparse and the uncertainty in the estimated properties is large. To make the inverse problem well posed and to characterize the uncer- tainty of the estimate, hydrological inversions use Bayesian inference to incorporate prior information [Carrera and Neuman, 1986; McLaughlin and Townley, 1996; Woodbury and Ulrych, 2000; Castagna and Bellin, 2009; Rubin et al., 2010]. [5] The characterization of aquifers based purely on hydraulic data, briefly reviewed in section 1.2.1, often has very large uncertainties. The reduction of this uncertainty is the motivation to include additional data into the characteri- zation and has led to increased interest in hydrogeophysical methods and joint inversions of hydraulic and geophysical data. The poroelastic inversion discussed here is a spe- cial case of hydrogeophysical inversion that aims to add deformation measurements to hydraulic data. Section 1.2.2 summarizes previous work on poroelastic inversion.
 % 1.2.1.
 
-
-
-\subsection{Poromechanics forward model}\label{sec:poromech}
+\subsection{Poroelastic forward model}\label{sec:poromech}
 
 To describe the coupling of subsurface flow with the deformation of the pore skeleton, we require a poromechanics model. Biot's linear quasi-static poroelasticity equations  \citet{Biot1941}
 generally provide a good match with field observations. The PDEs for the evolution of the fluid pressure $p=p(x,t)$ and the solid displacement $\u=\u(x,t)$ are given by (see \citet{Wang2000})
@@ -316,54 +294,22 @@ tensor in terms of the solid displacements is given by
 \end{alignat*}
 where $G$ and $\nu$ are the drained shear modulus and Poisson's ratio, respectively.  
 
-The governing equations contain six independent parameter fields. There are four mechanical parameters $\Stor$, $\alpha$, $G$ \& $\nu$ and two hydraulic parameters $\kappa$ \& $\mu$. In shallow groundwater applications the water viscosity $\mu$ can be assumed to be constant and most geological application Poisson's ratio is typically set to $\nu = 0.25$. The remaining four fields are unknown and spatially variable. The specific storage $\Stor$ and permeability $\kappa$ determine the aquifer response to pumping and recharge and are hence of greatest interest. The Biot-Willis parameter, $\alpha$, and drained shear modulus, $G$, determine the deformation that results from groundwater flow and hence the surface deformation that can be observed by InSAR.
-
-For the testbed outlined in \S\ref{sec:SLV} the annual recharge of the aquifer due to snow melt in the spring is essential for the cyclical behavior shown in Figure \note{X}. In the model this recharge is represents by a temporally and spatially varying flux, $q_r$, applied to the lateral boundary, $\partial\Omega_l$, of the aquifer
-\begin{align}
-    \mathbf{q}\cdot\hat{\mathbf{n}} = q_r(s,t)\quad \mathbf{x} \in \partial\Omega_l \times (0,\,T),
-\end{align}
-where $s$ is a arc-length coordinate along the boundary and $\mathbf{q}$ is the volumetric flux from Darcy's law.
-
-
+The governing equations contain six independent parameter fields. There are four mechanical parameters $\Stor$, $\alpha$, $G$ \& $\nu$ and two hydraulic parameters $\kappa$ \& $\mu$. In shallow groundwater applications the water viscosity $\mu$ can be assumed to be constant and most geological application Poisson's ratio is typically set to $\nu = 0.25$. The remaining four fields are unknown and spatially variable. The specific storage $\Stor$ and permeability $\kappa$ determine the aquifer response to pumping and recharge and are hence of greatest interest. The Biot-Willis parameter, $\alpha$, and drained shear modulus, $G$, determine the deformation that results from groundwater flow and hence the surface deformation that can be observed by InSAR. The details of the aquifer model that are required for will be developed for the testbed in the SLV are described in \S\,\ref{sec:proposed forward}. 
 %Characterizing the permeability field is key to successful prediction of pore pressure perturbations and induced seismicity. Because of the multiple orders of magnitude variation in the permeability, the wide range of spatial and time scales exhibited, and the complex subsurface geometries, the design of efficient discretization methods as well as parallel mesh adaptivity and scalable solvers has proved elusive. In \S\ref{sec:solver} and \S\ref{sec:amr}, we describe proposed work aimed at overcoming these challenges.
 
+\subsection{Poroelastic inverse problems}
+Galloway and Hoffmann [2007]\cite{Gall} review several case studies that have successfully used time series surface defor- mation measurements to inform hydrological models and to constrain aquifer properties. These studies assume purely vertical deformation, i.e., they only use equation (1a) in section 2, although increasingly accurate horizontal dis- placement measurements are available. Here we propose to integrate all components of the observed displacement with hydraulic data through a fully coupled poroelastic inversion of surface deformation and hydraulic data for aquifer characterization.
+
+Unlike, for instance, geoelectrical measurements, sur-
+face deformation is not directly related to a physical prop- erty of the pore fluid and therefore the fluid distribution, but rather to the force exerted onto the porous matrix by the pore fluid pressure gradients, which are due to pore fluid flow. Poroelastic inversion is therefore a potentially powerful method to monitor the dynamics of flow in the subsurface. In a sequence of papers, Vasco and cowork- ers show that surface deformation measurements either from satellite geodesy or tilt measurements can be used to infer information about aquifer volume changes and pres- sure distribution [Vasco et al., 2000, 2001; Vasco, 2004]. They show that the permeability distribution can be inferred from pressure fronts at multiple times [Vasco and Ferretti, 2005] or from pressure travel time tomography [Vasco, 2004; Vasco et al., 2008a, 2008b, 2010]. Both methods are based on Green’s functions for efficient and accurate solution of the poroelastic equations. Rucci et al. [2010] showed that the pressure travel times are insensitive to variations in mechanical properties. A similar Green’s func- tion based approach was also presented by Du and Olson [2001] for a joint inversion of pressure observations and surface deformation.
+
+Iglesias and McLaughlin [2012] have developed a mathematically rigorous framework for the deterministic poroelastic inversion. Similar to the work presented here, they use adjoints to compute derivatives of the least squares optimization problem arising in deterministic inversion. They present a joint inversion of surface deformation and pressure data for permeability and one of the elastic param- eters. For the assimilation of surface deformation data into complex stand-alone aquifer simulation models, Chang et al. [2010] have proposed an Ensemble Kalman filter and Wick et al. [2013] have proposed an iterative stochastic ensemble method.
+
 \subsection{Bayesian inversion}\label{sec:bayesian}
-
-In the Bayesian approach, we state the inverse problem as a problem of
-\emph{statistical inference} over the space of uncertain parameters,
-which are to be inferred from the data and a physics-based model.
-The resulting solution to the statistical inverse problem is a
-posterior distribution that assigns to any candidate set of parameter
-fields our belief (expressed as a probability) that a member of this
-candidate set is the ``true'' parameter field that gave rise to the
-observed data.
+In the Bayesian approach, we state the inverse problem as a problem of \emph{statistical inference} over the space of uncertain parameters, which are to be inferred from the data and a physics-based model. The resulting solution to the statistical inverse problem is a posterior distribution that assigns to any candidate set of parameter fields our belief (expressed as a probability) that a member of this candidate set is the ``true'' parameter field that gave rise to the observed data.
 %
-When discretized, this  infinite-dimensional inverse problem  gives
-rise naturally to a large-scale problem of inference over the discrete
-parameters
-% space
-$\vec{x} \in \mathbb R^n$, corresponding to degrees of
-freedom in the parameter field mesh.
-%  While the presentation in
-%this paper is limited to the finite dimensional approximation to
-%the infinite dimensional measure, the discretization process is
-%performed rigorously following \cite{Stuart10,
-%  Bui-ThanhGhattasMartinEtAl12}, and the numerical evidence indicates
-%that we converge to the correct infinite dimensional distribution.
-
-%% candidate parameters $\vec{x}$ a value $\pi_{\text{post}}(\vec{x})$,
-%% which reflects our degree of confidence that the parameters $\vec{x}$
-%% might be the true values that gave rise to the data.
-
-The posterior probability distribution combines the prior pdf
-$\pi_{\text{prior}}(\vec{x})$ over the parameter space, which encodes
-any knowledge or assumptions about the parameter space that we may
-wish to impose before the data are considered, with a likelihood pdf
-$\pi_{\text{like}}(\vec{y}_{\text{obs}}|\vec{x})$, which explicitly
-represents the probability that a given set of parameters $\vec{x}$
-might give rise to the observed data $\vec{y}_{\text{obs}} \in
-\mathbb{R}^m$.  Bayes' Theorem then explicitly computes the posterior
-pdf as
+When discretized, this  infinite-dimensional inverse problem  gives rise naturally to a large-scale problem of inference over the discrete parameters $\vec{x} \in \mathbb R^n$, corresponding to degrees of freedom in the parameter field mesh. The posterior probability distribution combines the prior pdf $\pi_{\text{prior}}(\vec{x})$ over the parameter space, which encodes any knowledge or assumptions about the parameter space that we may
+wish to impose before the data are considered, with a likelihood pdf $\pi_{\text{like}}(\vec{y}_{\text{obs}}|\vec{x})$, which explicitly represents the probability that a given set of parameters $\vec{x}$ might give rise to the observed data $\vec{y}_{\text{obs}} \in \mathbb{R}^m$.  Bayes' Theorem then explicitly computes the posterior pdf as
 % \begin{align*}
 $ \pi_{\text{post}}(\vec{x} | \vec{y}_{\text{obs}}) \propto
 \pi_{\text{prior}}(\vec{x}) \pi_{\text{like}}(\vec{y}_{\text{obs}} | \vec{x})$.
@@ -393,11 +339,8 @@ $ \pi_{\text{post}}(\vec{x} | \vec{y}_{\text{obs}}) \propto
 %% % OG: should we say the following?
 %% % and thus the inverse problem is well-posed
 %
-For many problems it is reasonable to choose the prior distribution to
-be Gaussian. If the parameters are coefficients corresponding to a
-discretization of a field, the prior covariance operator usually
-imposes smoothness on the parameters, which is also important to state a
-physically meaningful infinite-dimensional Bayesian inverse problem
+For many problems it is reasonable to choose the prior distribution to be Gaussian. If the parameters are coefficients corresponding to a discretization of a field, the prior covariance operator usually
+imposes smoothness on the parameters, which is also important to state a physically meaningful infinite-dimensional Bayesian inverse problem
 \cite{Stuart10,Bui-ThanhGhattasMartinEtAl13}.
 %% The difference between the observables predicted by the
 %% model and the actual observations $ \vec{y}_{\text{obs}}$ is due to
@@ -459,68 +402,30 @@ physically meaningful infinite-dimensional Bayesian inverse problem
 %% states nonlinearly in the forward PDEs.
 %%
 %% As is clear from the expression \eqref{posterior}, 
-Despite the choice
-of Gaussian prior and noise probability distributions, the posterior
-probability distribution need not be Gaussian, due to the nonlinearity
-of the parameter-to-observable map.
+Despite the choice of Gaussian prior and noise probability distributions, the posterior probability distribution need not be Gaussian, due to the nonlinearity of the parameter-to-observable map.
 % of $\vec f(\vec{x})$. 
-The non-Gaussianity of the posterior poses challenges for computing
-statistics of interest for typical large-scale inverse problems, since
-$\pi_{\text{post}}$ is often a surface in high dimensions, and
-evaluating each point on this surface requires the solution of the
-forward PDE model.
+The non-Gaussianity of the posterior poses challenges for computing statistics of interest for typical large-scale inverse problems, since $\pi_{\text{post}}$ is often a surface in high dimensions, and evaluating each point on this surface requires the solution of the forward PDE model.
 % (wave
 %propagation equations with $O(10^9)$ unknowns, in the target
 %problem).
 Numerical quadrature to compute the mean and covariance
-matrix, for example, is completely out of the question. The method of
-choice 
-% for computing statistics 
-is Markov chain Monte Carlo (MCMC), which judiciously samples the
-posterior
+matrix, for example, is completely out of the question. The method of choice is Markov chain Monte Carlo (MCMC), which judiciously samples the posterior
 % distribution, 
-so that sample statistics can be computed. But the use of MCMC for
-large-scale inverse problems is still prohibitive for expensive
-forward problems and high dimensional parameter spaces, since even for
-modest numbers of parameters, the number of samples required can be in
-the millions.
+so that sample statistics can be computed. But the use of MCMC for large-scale inverse problems is still prohibitive for expensive forward problems and high dimensional parameter spaces, since even for modest numbers of parameters, the number of samples required can be in the millions.
 
-The key to overcoming the curse of dimensionality, we argue, lies in
-effectively exploiting the problem structure to
+The key to overcoming the curse of dimensionality, we argue, lies in effectively exploiting the problem structure to
 % implicitly or explicitly
 reduce the dimension of both the parameter space of the
-inverse problem as well as the state space of the forward problem.
-The motivation for this reduction lies in the fact that the data are
-often informative about just a fraction of ``modes'' of the parameter
-field, due to ill-posedness of the inverse problem.
+inverse problem as well as the state space of the forward problem. The motivation for this reduction lies in the fact that the data are often informative about just a fraction of ``modes'' of the parameter field, due to ill-posedness of the inverse problem.
 %
-A number of current approaches to model reduction for Bayesian inverse
-problems show promise. These range from Gaussian process response
-surface approximation of the parameter-to-observable map
-\cite{Kennedy2001, Bui-ThanhGhattasHigdon12}, to projection-type
-forward model reductions \cite{GalballyFidkowskiWillcoxEtAl10,
-  lwgSISC2010,CuiMarzoukWillcox14}, to polynomial chaos approximations
-of the stochastic forward problem \cite{MarzoukNajm09,
-  GhanemDoostan06, BadriZabaras04}, to low-rank approximation of the
-Hessian of the log-likelihood \cite{FlathWilcoxAkcelikEtAl11,
-  MartinWilcoxBursteddeEtAl12,
-  Bui-ThanhBursteddeGhattasEtAl12_gbfinalist,
-  Bui-ThanhGhattasMartinEtAl13,CuiMartinMarzoukEtAl14}, to
-% preconditioned/
-delayed acceptance MCMC methods
-\cite{EfendievHouLuo06,ChristenFox05,CuiMarzoukWillcox14}, in which
-%  coarser or 
-an inexpensive model is deployed in a trial step to determine whether the
-candidate point may be accepted in the Markov chain.
+A number of current approaches to model reduction for Bayesian inverse problems show promise. These range from Gaussian process response surface approximation of the parameter-to-observable map
+\cite{Kennedy2001, Bui-ThanhGhattasHigdon12}, to projection-type forward model reductions \cite{GalballyFidkowskiWillcoxEtAl10,lwgSISC2010,CuiMarzoukWillcox14}, to polynomial chaos approximations of the stochastic forward problem \cite{MarzoukNajm09,GhanemDoostan06, BadriZabaras04}, to low-rank approximation of the Hessian of the log-likelihood \cite{FlathWilcoxAkcelikEtAl11,MartinWilcoxBursteddeEtAl12,Bui-ThanhBursteddeGhattasEtAl12_gbfinalist,Bui-ThanhGhattasMartinEtAl13,CuiMartinMarzoukEtAl14}, to delayed acceptance MCMC methods
+\cite{EfendievHouLuo06,ChristenFox05,CuiMarzoukWillcox14}, in which an inexpensive model is deployed in a trial step to determine whether the candidate point may be accepted in the Markov chain.
 %
-In \S\ref{sec:mcmc}, we propose scalable algorithms to accelerate MCMC
-sampling building on the latter two approaches: low-rank
+In \S\ref{sec:mcmc}, we propose scalable algorithms to accelerate MCMC sampling building on the latter two approaches: low-rank
 Hessian approximations 
 % of the log-posterior Hessian 
-and delayed acceptance.  For the construction of the inexpensive model
-required in delayed acceptance MCMC, we propose in \S\ref{sec:rom}
-explicit model reduction techniques that vastly reduce the cost of each
-forward solve.
+and delayed acceptance.  For the construction of the inexpensive model required in delayed acceptance MCMC, we propose in \S\ref{sec:rom} explicit model reduction techniques that vastly reduce the cost of each forward solve.
 
 
 \subsection{Control and management under uncertainty}
@@ -528,11 +433,7 @@ forward solve.
 
 The optimal control problem we aim to solve is: \emph{What is the maximum rate at which each well can produce without the head dropping below a critical value anywhere in the aquifer (or should it be the monitoring wells?).}
 
-Uncertainties in the permeability field that are quantified through
-Bayesian inference must be taken into account when decisions about the
-optimal control and management of the GCS process are made, i.e.,
-where and at what rates should injection occur to store the maximum
-amount of \CO2 while avoiding leakage and induced seismicity. 
+Uncertainties in the permeability field that are quantified through Bayesian inference must be taken into account when decisions about the optimal control and management of the GCS process are made, i.e., where and at what rates should injection occur to store the maximum amount of \CO2 while avoiding leakage and induced seismicity. 
 % Examples for control and
 % management targets are: How should groundwater be extracted from an
 % aquifer to avoid differential subsidence and thus damage to
@@ -542,21 +443,12 @@ amount of \CO2 while avoiding leakage and induced seismicity.
 % and how can damage due to surface uplift be avoided? Where should
 % wells be positioned to extract groundwater in the most
 % energy-efficient and environmentally-sustainable way?  
-Mathematically, this results in a  constrained stochastic optimization
-problem, 
+Mathematically, this results in a  constrained stochastic optimization problem, 
 % , which can be
 % We next consider the stochastic control problem,
 % cast as optimization problems that seek to minimize an objective function
 % under given constraint functions. In the stochastic setting, the
-with performance-based objective and/or constraint functions taking
-the form of expectations, variances, or probabilities, and with
-stochastic poromechanics PDEs representing the behavior of the
-system. The past decade has seen considerable advances in algorithms
-for robust optimization and stochastic optimization, e.g.,
-\cite{bertsimas2004price, ben2006extending, birge1997introduction,
-  shapiro2009lectures}. However, these algorithms are in general
-tractable only for small systems (a handful of states) or to larger
-systems that have specific mathematical structure.
+with performance-based objective and/or constraint functions taking the form of expectations, variances, or probabilities, and with stochastic poromechanics PDEs representing the behavior of the system. The past decade has seen considerable advances in algorithms for robust optimization and stochastic optimization, e.g., \cite{bertsimas2004price, ben2006extending,birge1997introduction,shapiro2009lectures}. However, these algorithms are in general tractable only for small systems (a handful of states) or to larger systems that have specific mathematical structure.
 % and not to stochastic PDE-constrained optimization problems.
 % The challenges
 % Expensive forward solves
@@ -566,34 +458,14 @@ systems that have specific mathematical structure.
 % Estimating low-probability events?
 % Optimization of systems governed by stochastic PDEs is a nascent
 % field, with 
-Recent developments have begun to lay the mathematical groundwork for
-developing algorithms for optimal control of systems governed by
-stochastic PDEs \cite{GunzburgerLeeLee11, GunzburgerMing11,
-  Kouri12}. Significant challenges remain for systems with
-high-dimensional stochastic parameters, as for the random
-permeability fields we face, and where the control decision variables
-may be high-dimensional, as in time-dependent \CO2 injection rates or
-spatially-distributed locations of observation/injection wells.
+Recent developments have begun to lay the mathematical groundwork for developing algorithms for optimal control of systems governed by stochastic PDEs \cite{GunzburgerLeeLee11,GunzburgerMing11,Kouri12}. Significant challenges remain for systems with high-dimensional stochastic parameters, as for the random permeability fields we face, and where the control decision variables may be high-dimensional, as in time-dependent \CO2 injection rates or spatially-distributed locations of observation/injection wells.
 % high dimension, where the forward problem alone is challenging and
 % expensive to solve, and where the parameter space that represents the
 % control decision variables may be large.
 %
-Building on our extensive work in {\em model reduction}, we will
-address these challenges in the context of end-to-end control and
-management of uncertainty via low-dimensional models that can be
-rapidly solved yet still capture the pertinent physics relevant to
-decision-making. Our methods must thus provide the mechanisms for
-informing and adapting the reduced model with both the Bayesian
-inversion and the stochastic control objectives. These methods are
-described in Section~\ref{sec:rom}.
+Building on our extensive work in {\em model reduction}, we will address these challenges in the context of end-to-end control and management of uncertainty via low-dimensional models that can be rapidly solved yet still capture the pertinent physics relevant to decision-making. Our methods must thus provide the mechanisms for informing and adapting the reduced model with both the Bayesian inversion and the stochastic control objectives. These methods are described in Section~\ref{sec:rom}.
 
-\subsection{Poroelastic inverse problems}
-Galloway and Hoffmann [2007] review several case studies that have successfully used time series surface defor- mation measurements to inform hydrological models and to constrain aquifer properties. These studies assume purely vertical deformation, i.e., they only use equation (1a) in section 2, although increasingly accurate horizontal dis- placement measurements are available. Here we propose to integrate all components of the observed displacement with hydraulic data through a fully coupled poroelastic inversion of surface deformation and hydraulic data for aquifer characterization.
 
-Unlike, for instance, geoelectrical measurements, sur-
-face deformation is not directly related to a physical prop- erty of the pore fluid and therefore the fluid distribution, but rather to the force exerted onto the porous matrix by the pore fluid pressure gradients, which are due to pore fluid flow. Poroelastic inversion is therefore a potentially powerful method to monitor the dynamics of flow in the subsurface. In a sequence of papers, Vasco and cowork- ers show that surface deformation measurements either from satellite geodesy or tilt measurements can be used to infer information about aquifer volume changes and pres- sure distribution [Vasco et al., 2000, 2001; Vasco, 2004]. They show that the permeability distribution can be inferred from pressure fronts at multiple times [Vasco and Ferretti, 2005] or from pressure travel time tomography [Vasco, 2004; Vasco et al., 2008a, 2008b, 2010]. Both methods are based on Green’s functions for efficient and accurate solution of the poroelastic equations. Rucci et al. [2010] showed that the pressure travel times are insensitive to variations in mechanical properties. A similar Green’s func- tion based approach was also presented by Du and Olson [2001] for a joint inversion of pressure observations and surface deformation.
-
-Iglesias and McLaughlin [2012] have developed a mathematically rigorous framework for the deterministic poroelastic inversion. Similar to the work presented here, they use adjoints to compute derivatives of the least squares optimization problem arising in deterministic inversion. They present a joint inversion of surface deformation and pressure data for permeability and one of the elastic param- eters. For the assimilation of surface deformation data into complex stand-alone aquifer simulation models, Chang et al. [2010] have proposed an Ensemble Kalman filter and Wick et al. [2013] have proposed an iterative stochastic ensemble method.
 
 % \begin{figure}
 %   \begin{center}
@@ -607,7 +479,7 @@ sustainability \cite{NRC2012}.
 
 
 \section{Preliminary results}\label{sec:previous}
-\subsection{InSAR work over the San Luis Valley}
+\subsection{InSAR work over the San Luis Valley}\label{sec:previous InSAR}
 Due to the lack of direct observations, the water storage change in deep confined aquifers is the least well-characterized element in the fresh water cycle. Land subsidence measurements derived from InSAR can be employed to improve the temporal and spatial resolution of existing confined aquifer well data sets, because the total compaction $\Delta b$ due to confined aquifer pumping is proportional to the change in head levels known as hydraulic head $\Delta h$ as \citep[e.g.,][]{galloway2011}:
 \begin{align}
   S_{k} = \frac{\Delta b}{\Delta h}
@@ -649,10 +521,27 @@ The PI and co-PI's bring together an interdisciplinary skill set modeling porous
 
 
 \section{Proposed study}
+We propose to develop a prototype system for application in the San Luis Valley of Colorado. Our modeling approach builds a predictive model through the analysis of $>$20 years (1992-present) of in-situ and satellite data to determine the spatial and temporal links between hydraulic head and other principle components of the basin-scale water cycle - precipitation, run-off, evapotranspiration, surface water, soil moisture, and groundwater pumping; the predictive model is continually updated with the addition of newly acquired data. Because we cannot measure head directly except at sparse well locations, we will use recently-developed InSAR methods deriving subsidence over time to obtain temporally and spatially dense head estimates.  Once calibrated with local well-based measurements, these observations will be integrated using the predictive model to predict future head levels. In developing the predictive model to forecast head, the study area will be expanded beyond the SLV to the basin headwaters in the San Juan and Sangre De Christo mountains. We aim to discover a reliable predictive link between snow accumulation and melt and head changes in the confined aquifer.  While evidence suggests that the snowpack at lower elevations is the primary source of recharge to the confined aquifer, there is not a solid quantitative basis for making reliable predictions of head changes in the aquifer.  Such a predictive capability would be extremely valuable and would allow Colorado water managers to take proactive measures if low heads were predicted.  For example, fields could be fallowed, or water from the Rio Grande could be used to recharge selected areas of the aquifer.
+
+
 In this section we describe proposed research aimed at overcoming the challenges elucidated in the previous sections. These include scalable parallel adaptive mesh forward solvers (§3.1) for the poromechanics model, faster MCMC sampling for Bayesian inversion (§3.2), and end-to-end model reduction for optimization under uncertainty (§3.3). This section also describes two application testbeds for studying control and management of CO2 injection and induced seismicity (§3.4–§3.5).
+
+
 
 \subsection{In-situ and Remote Sensing Data Products}
 As the basis for developing the Decision Support System, we need to quantify all relevant terms of the water balance equation. Historical head measurements of the SLV aquifer system can be accessed from the San Luis Valley Well and Water-Level Database (http://www.prinmath.com/rgwcd/). The hydraulic head in confined aquifers will be estimated using InSAR data shown in Figure \ref{fig:insar-mission} through calibration with local well measurements. The hydraulic head in unconfined aquifers will be quantified using relatively abundant shallow aquifer wells. To quantify other flux and storage terms in the water balance model, we will assimilate available satellite data products and models listed in Table \ref{tb:data} into the decision-support system. In addition, we will include the rain gauge data to calculate precipitation and USGS in-situ hydrologic data from surface water gauges to calculate the river runoff. Water levels in streams and lakes will be used to calculate the surface water storage change in rivers and lakes. We will also integrate forward looking predictions of snow melt and climate forecasts from National Operational Hydrologic Remote Sensing Center and NOAA Climate Prediction Center, which guide solution for the predictions of hydraulic head up to six months in advance.
+
+\subsection{Development of poromechanical model for the confined aquifer in the SLV}\label{sec:proposed forward}
+
+For the testbed outlined in \S\ref{sec:SLV} the annual recharge of the aquifer due to snow melt in the spring is essential for the cyclical behavior shown in Figure \note{X}. In the model this recharge is represents by a temporally and spatially varying flux, $q_r$, applied to the lateral boundary, $\partial\Omega_l$, of the aquifer
+\begin{align}
+    \mathbf{q}\cdot\hat{\mathbf{n}} = q_r(s,t)\quad \mathbf{x} \in \partial\Omega_l \times (0,\,T),
+\end{align}
+where $s$ is a arc-length coordinate along the boundary and $\mathbf{q}$ is the volumetric flux from Darcy's law.
+
+\subsection{Data assimilation into poromechanic model for the SLV}\label{sec:proposed inverse}
+
+\subsection{Optimal GW extraction strategies for SLV}\label{sec:proposed optimal}
 
 \begin{figure}
 \noindent\includegraphics[width=0.7\textwidth]{Figures/InSARmissions.pdf}
@@ -678,7 +567,7 @@ NLDAS & 1979 & present & Evapotranspiration, Root Zone Soil Moisture \\[1.0 ex]
 \label{tb:data}
 \end{table}
 
-\subsection{Outstanding science questions}
+% \subsection{Outstanding science questions}
 
 
 
