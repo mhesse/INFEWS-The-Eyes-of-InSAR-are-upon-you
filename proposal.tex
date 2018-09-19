@@ -298,12 +298,13 @@ The governing equations contain six independent parameter fields. There are four
 %Characterizing the permeability field is key to successful prediction of pore pressure perturbations and induced seismicity. Because of the multiple orders of magnitude variation in the permeability, the wide range of spatial and time scales exhibited, and the complex subsurface geometries, the design of efficient discretization methods as well as parallel mesh adaptivity and scalable solvers has proved elusive. In \S\ref{sec:solver} and \S\ref{sec:amr}, we describe proposed work aimed at overcoming these challenges.
 
 \subsection{Poroelastic inverse problems}
-Galloway and Hoffmann [2007]\cite{Gall} review several case studies that have successfully used time series surface defor- mation measurements to inform hydrological models and to constrain aquifer properties. These studies assume purely vertical deformation, i.e., they only use equation (1a) in section 2, although increasingly accurate horizontal dis- placement measurements are available. Here we propose to integrate all components of the observed displacement with hydraulic data through a fully coupled poroelastic inversion of surface deformation and hydraulic data for aquifer characterization.
+The potential of surface deformation derived from InSAR in aquifer characterization has been recognized since at least 2000, see Galloway and Hoffmann for a review
+\cite{Galloway2017}. The deterministic invers problem generally aims to reduce the error between model predictions and the observed data. Due to the sparsity of the observation the inverse problem is typically ill-posed and has to be regularized. Early inverse methods for poroelasticity where based on analytic approaches that only apply to porous media with simple heterogeneity such as a horizontal layering and where mostly used to estimate aquifer pressure rather than aquifer properties \cite{Du2001,Vasco2001,Vasco2008,Vasco2010}. 
 
-Unlike, for instance, geoelectrical measurements, sur-
-face deformation is not directly related to a physical prop- erty of the pore fluid and therefore the fluid distribution, but rather to the force exerted onto the porous matrix by the pore fluid pressure gradients, which are due to pore fluid flow. Poroelastic inversion is therefore a potentially powerful method to monitor the dynamics of flow in the subsurface. In a sequence of papers, Vasco and cowork- ers show that surface deformation measurements either from satellite geodesy or tilt measurements can be used to infer information about aquifer volume changes and pres- sure distribution [Vasco et al., 2000, 2001; Vasco, 2004]. They show that the permeability distribution can be inferred from pressure fronts at multiple times [Vasco and Ferretti, 2005] or from pressure travel time tomography [Vasco, 2004; Vasco et al., 2008a, 2008b, 2010]. Both methods are based on Green’s functions for efficient and accurate solution of the poroelastic equations. Rucci et al. [2010] showed that the pressure travel times are insensitive to variations in mechanical properties. A similar Green’s func- tion based approach was also presented by Du and Olson [2001] for a joint inversion of pressure observations and surface deformation.
+Only recently have computational approached been developed to invert time-series surface deformation observations for spatial variations in aquifer properties.  For the assimilation of surface deformation data into complex stand-alone aquifer simulation models, Chang et al. \cite{Chang2010} have proposed an Ensemble Kalman filter and Wick et al. \cite{Wick2013} have proposed an iterative stochastic ensemble method. While these methods are easily applied to existing simulators, the computationally very inefficient.
 
-Iglesias and McLaughlin [2012] have developed a mathematically rigorous framework for the deterministic poroelastic inversion. Similar to the work presented here, they use adjoints to compute derivatives of the least squares optimization problem arising in deterministic inversion. They present a joint inversion of surface deformation and pressure data for permeability and one of the elastic param- eters. For the assimilation of surface deformation data into complex stand-alone aquifer simulation models, Chang et al. [2010] have proposed an Ensemble Kalman filter and Wick et al. [2013] have proposed an iterative stochastic ensemble method.
+Separately, Iglesias and McLaughlin \cite{Iglesias2012a} and Hesse and Stadler \cite{Hesse2014} have developed a mathematically rigorous framework for the deterministic poroelastic inversion. They use adjoints of the poroelastic equations to compute derivatives of the least squares optimization problem arising in deterministic inversion. Such gradient based methods are computationally efficient and a requirement to make optimal design under uncertainty as proposed in \S\,\ref{sec:proposed optimal} feasible. The perceived disadvantage of these methods is that the algorithm has to be designed for the particular problem at hand. However, recently software libraries, such as hIPPYlib \note{[best citation]}, have been developed that streamline the development of these methods and make it feasible to apply them to realistic problems.
+
 
 \subsection{Bayesian inversion}\label{sec:bayesian}
 In the Bayesian approach, we state the inverse problem as a problem of \emph{statistical inference} over the space of uncertain parameters, which are to be inferred from the data and a physics-based model. The resulting solution to the statistical inverse problem is a posterior distribution that assigns to any candidate set of parameter fields our belief (expressed as a probability) that a member of this candidate set is the ``true'' parameter field that gave rise to the observed data.
@@ -422,48 +423,18 @@ A number of current approaches to model reduction for Bayesian inverse problems 
 \cite{Kennedy2001, Bui-ThanhGhattasHigdon12}, to projection-type forward model reductions \cite{GalballyFidkowskiWillcoxEtAl10,lwgSISC2010,CuiMarzoukWillcox14}, to polynomial chaos approximations of the stochastic forward problem \cite{MarzoukNajm09,GhanemDoostan06, BadriZabaras04}, to low-rank approximation of the Hessian of the log-likelihood \cite{FlathWilcoxAkcelikEtAl11,MartinWilcoxBursteddeEtAl12,Bui-ThanhBursteddeGhattasEtAl12_gbfinalist,Bui-ThanhGhattasMartinEtAl13,CuiMartinMarzoukEtAl14}, to delayed acceptance MCMC methods
 \cite{EfendievHouLuo06,ChristenFox05,CuiMarzoukWillcox14}, in which an inexpensive model is deployed in a trial step to determine whether the candidate point may be accepted in the Markov chain.
 %
-In \S\ref{sec:mcmc}, we propose scalable algorithms to accelerate MCMC sampling building on the latter two approaches: low-rank
-Hessian approximations 
+In \S\ref{sec:mcmc}, we propose scalable algorithms to accelerate MCMC sampling building on the latter two approaches: low-rank Hessian approximations 
 % of the log-posterior Hessian 
 and delayed acceptance.  For the construction of the inexpensive model required in delayed acceptance MCMC, we propose in \S\ref{sec:rom} explicit model reduction techniques that vastly reduce the cost of each forward solve.
 
 
-\subsection{Control and management under uncertainty}
-\label{sec:control}
+\subsection{Control and management under uncertainty}\label{sec:control}
 
-The optimal control problem we aim to solve is: \emph{What is the maximum rate at which each well can produce without the head dropping below a critical value anywhere in the aquifer (or should it be the monitoring wells?).}
+Uncertainties in the poroelastic parameters that are quantified through Bayesian inference must be taken into account when decisions about the optimal control and management of the GW extraction, i.e., which wells should pump how much whate at which time to maximize food production without lowering the GW head below legal baseline (see \S\,\ref{sec:SLV}). Mathematically, this results in a  constrained stochastic optimization problem, with performance-based objective and/or constraint functions taking the form of expectations, variances, or probabilities, and with stochastic poroelastic PDEs representing the behavior of the system. The past decade has seen considerable advances in algorithms for robust optimization and stochastic optimization, e.g., \cite{bertsimas2004price, ben2006extending,birge1997introduction,shapiro2009lectures}. However, these algorithms are in general tractable only for small systems (a handful of states) or to larger systems that have specific mathematical structure.
 
-Uncertainties in the permeability field that are quantified through Bayesian inference must be taken into account when decisions about the optimal control and management of the GCS process are made, i.e., where and at what rates should injection occur to store the maximum amount of \CO2 while avoiding leakage and induced seismicity. 
-% Examples for control and
-% management targets are: How should groundwater be extracted from an
-% aquifer to avoid differential subsidence and thus damage to
-% infrastructure and buildings?
-%, wells, and water lines? 
-% What is the most efficient way to artificially recharge an aquifer,
-% and how can damage due to surface uplift be avoided? Where should
-% wells be positioned to extract groundwater in the most
-% energy-efficient and environmentally-sustainable way?  
-Mathematically, this results in a  constrained stochastic optimization problem, 
-% , which can be
-% We next consider the stochastic control problem,
-% cast as optimization problems that seek to minimize an objective function
-% under given constraint functions. In the stochastic setting, the
-with performance-based objective and/or constraint functions taking the form of expectations, variances, or probabilities, and with stochastic poromechanics PDEs representing the behavior of the system. The past decade has seen considerable advances in algorithms for robust optimization and stochastic optimization, e.g., \cite{bertsimas2004price, ben2006extending,birge1997introduction,shapiro2009lectures}. However, these algorithms are in general tractable only for small systems (a handful of states) or to larger systems that have specific mathematical structure.
-% and not to stochastic PDE-constrained optimization problems.
-% The challenges
-% Expensive forward solves
-% Curse of dimensionality in sampling the stochastic space
-% Accounting for model inadequacy/modeling uncertainty
-% High dimensional control parameterization
-% Estimating low-probability events?
-% Optimization of systems governed by stochastic PDEs is a nascent
-% field, with 
-Recent developments have begun to lay the mathematical groundwork for developing algorithms for optimal control of systems governed by stochastic PDEs \cite{GunzburgerLeeLee11,GunzburgerMing11,Kouri12}. Significant challenges remain for systems with high-dimensional stochastic parameters, as for the random permeability fields we face, and where the control decision variables may be high-dimensional, as in time-dependent \CO2 injection rates or spatially-distributed locations of observation/injection wells.
-% high dimension, where the forward problem alone is challenging and
-% expensive to solve, and where the parameter space that represents the
-% control decision variables may be large.
-%
-Building on our extensive work in {\em model reduction}, we will address these challenges in the context of end-to-end control and management of uncertainty via low-dimensional models that can be rapidly solved yet still capture the pertinent physics relevant to decision-making. Our methods must thus provide the mechanisms for informing and adapting the reduced model with both the Bayesian inversion and the stochastic control objectives. These methods are described in Section~\ref{sec:rom}.
+Recent developments have begun to lay the mathematical groundwork for developing algorithms for optimal control of systems governed by stochastic PDEs \cite{GunzburgerLeeLee11,GunzburgerMing11,Kouri12}. Significant challenges remain for systems with high-dimensional stochastic parameters, as for the random aquifer properties we face, and where the control decision variables may be high-dimensional, as in time-dependent GW extraction rates of a large number of wells.
+
+Building on our extensive work in {\em model reduction}, we will address these challenges in the context of end-to-end control and management of uncertainty via low-dimensional models that can be rapidly solved yet still capture the pertinent physics relevant to decision-making. Our methods must thus provide the mechanisms for informing and adapting the reduced model with both the Bayesian inversion and the stochastic control objectives. \note{These methods are described in Section~\ref{sec:rom}.}
 
 
 
@@ -517,7 +488,9 @@ The PI and co-PI's bring together an interdisciplinary skill set modeling porous
 
 \textbf{Co-PI Chen} has been on the forefront of ...
 
-\textbf{Co-PI Ghattas} has been on the forefront of ...
+\textbf{Co-PI Ghattas} has been on the forefront of
+
+\textbf{Co-PI Willcox} is the capo di tutti i capi...
 
 
 \section{Proposed study}
@@ -542,6 +515,7 @@ where $s$ is a arc-length coordinate along the boundary and $\mathbf{q}$ is the 
 \subsection{Data assimilation into poromechanic model for the SLV}\label{sec:proposed inverse}
 
 \subsection{Optimal GW extraction strategies for SLV}\label{sec:proposed optimal}
+The optimal control problem we aim to solve is: \emph{What is the maximum rate at which each well can produce without the head dropping below a critical value anywhere in the aquifer (or should it be the monitoring wells?).}
 
 \begin{figure}
 \noindent\includegraphics[width=0.7\textwidth]{Figures/InSARmissions.pdf}
@@ -738,7 +712,7 @@ ENG & Relative permeability from LBM                         &\active{7}{2}&&\cr
 \newpage
 \addcontentsline{toc}{section}{6\hspace{2.5mm} References}
 \bibliographystyle{unsrt}
-\bibliography{mendeley_v2,insar,ccgo}
+\bibliography{mendeley_v2,insar,ccgo,willcox,notinccgo}
 
 \addcontentsline{toc}{section}{7\hspace{2.5mm} Data management plan}
 
