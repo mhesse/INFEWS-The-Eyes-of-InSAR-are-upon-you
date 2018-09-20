@@ -448,31 +448,32 @@ Building on our extensive work in {\em model reduction}, we will address these c
 However, solving stochastic inverse/optimal control problems for large-scale partial differential equation (PDE) models such as those of poromechanics is intractable using current methods, which suffer from the ``curse of dimensionality.''  Thus, our challenge is to overcome these barriers by developing scalable methods and algorithms that exploit the problem structure to {\em reduce effective dimensionality}. Overcoming the scalability problem by extracting low-dimensional structure from high-dimensional space is essential if we are to have any hope of optimally and sustainably managing natural and human resources based on predictive physics-based models, which is a central goal in the emerging field of computational
 sustainability \cite{NRC2012}.
 
+\begin{figure}
+\centering
+\noindent\includegraphics[width=.75\textwidth]{Figures/Figure3_small.pdf}
+\caption{ \textbf{a}) Seasonal subsidence signatures associated with summer pumping as inferred from an L-band ALOS InSAR data that spans April 16, 2010 and September 1, 2010. \textbf{b}) Seasonal uplift signatures associated with winter recharge as inferred from an L-band ALOS InSAR data that spans September 01, 2010 and March 4, 2011. \textbf{c}) Hydraulic head variations at the confined aquifer well shown as star in panels \emph{a} and \emph{b} between 1992 and 2011 as measured from well data (in blue) and estimated from InSAR data. %The same aquifer storage parameters ($S_{ke}$=0.00553 and $\tau$ = 6 days) were used to convert InSAR deformation time series of all three satellite missions to head. Using the interpolated well data as ground truth, the RMS error of the InSAR head estimates is 1.49 meters for the ERS-1/2 data, 0.75 meters for the Envisat data, and 1.21 meters for the ALOS data.
+}
+\label{fig:prelim insar}
+\end{figure}
 
 \section{Preliminary results}\label{sec:previous}
 \subsection{InSAR work over the San Luis Valley}\label{sec:previous InSAR}
-Due to the lack of direct observations, the water storage change in deep confined aquifers is the least well-characterized element in the fresh water cycle. Land subsidence measurements derived from InSAR can be employed to improve the temporal and spatial resolution of existing confined aquifer well data sets, because the total compaction $\Delta b$ due to confined aquifer pumping is proportional to the change in head levels known as hydraulic head $\Delta h$ as \citep[e.g.,][]{galloway2011}:
-\begin{align}
-  S_{k} = \frac{\Delta b}{\Delta h}
-\label{eq:elastic}  
-\end{align}
-where the skeletal storage coefficient $S_{k}$ can be either elastic or inelastic. When the head is maintained above the historical low, known as the preconsolidation head, the aquifer and aquitard deform elastically. When the head drops below the preconsolidation head, additional inelastic deformation occurs in clay units. Inelastic deformation is irreversible, which leads to permanent aquifer storage loss. 
 
-In addition, there are differences in the timing of deformation, in particular relative to the timing of head change. In order to convert InSAR subsidence to changes in head, the values of $S_{k}$  and the time delay at every location of interest are needed. These parameters can be estimated from co-located head and subsidence data \citep{Chen2016}. Assuming that the aquifer storage properties vary slowly in space, we can interpolate the $S_{k}$ and the time delay values at known locations in order to improve the spatial coverage of the existing hydraulic head dataset using InSAR \citep{Chen2017}.
+Co-PI Chen developed a new InSAR processing algorithm to correct for vegetation decorrelation in agricultural regions \cite{Chen2015}, which employs an adaptive interpolation between pixels with minimal decorrelation known as persistent scatterers (PS) \citep{Shanker2007}. The PS-based interpolation successfully restored the loss of InSAR phase continuity in the irrigated fields. For example, Figures \ref{fig:prelim insar} \emph{a} and \emh{b} show seasonal subsidence and uplift signatures associated with summer pumping and winter recharge inferred InSAR data, respectively. With this improved InSAR processing strategy, Co-PI Chen  was able to estimate confined aquifer storage properties and head levels over an 4,500 $km^2$ agricultural basin in the San Luis Valley (SLV), Colorado, over a 20-year period of time \cite{Chen2017}. The InSAR estimated head levels were extensively validated with all available well records (Figure \ref{fig:prelim insar}\emph{c}).
 
-It is common to assume that InSAR data are corrupted over agricultural regions due to vegetation decorrelation. Chen et al. \cite{Chen2015}  developed a new InSAR processing algorithm to correct these artifacts, which employs an adaptive interpolation between pixels with minimal decorrelation known as persistent scatterers (PS) \citep{Shanker2007}. The PS-based interpolation sucessfully restored the loss of InSAR phase continuity in the irrigated fields. For example, Figure \ref{fig:seasonal_def} seasonal subsidence and uplift signatures associated with summer pumping and winter recharge as inferred from L-band ALOS InSAR data. With this improved processing strategy, Chen et al. \cite{Chen2017} futher combined InSAR data acquired from multiple missions and estimated confined aquifer storage properties and head levels over an 4,500 $km^2$ agricultural basin in the San Luis Valley (SLV), Colorado, over a 20-year period of time. The InSAR estimated head levels were extensively validated with all available well records. A significant result was the finding that the elastic storage properties of the SLV confined aquifer system remained stable over the 20-year time period. As an example, Figure \ref{fig:ALA6} shows the head variations at the confined aquifer well ALA6 between 1992 and 2011 as measured from well data (in blue), ERS-1/2 (in magenta), Envisat (in red) and ALOS PALSAR (in green) data. All InSAR data sets indicate the same storage coefficient and time lag. This allows us to fill in the temporal gaps in the existing head data set prior to 1998 and between 2006 and 2010 using InSAR. The extended head time series over 20 years showed that little long-term water-storage loss occurred over the study period. These results are especially important for the management of groundwater in the SLV, where the Confined Aquifer Rules decision requires that the head in confined aquifers be maintained within the range of levels measured between 1978 and 2000 \citep{Rules}.
+A significant result was the finding that the elastic storage properties of the SLV confined aquifer system remained stable over a 20-year time period, indicating that no long-term water-storage loss occurred. These results are especially important for the management of groundwater in the SLV, where the Confined Aquifer Rules decision requires that the head in confined aquifers be maintained within the range of levels measured between 1978 and 2000 \citep{Rules}.
 
-\begin{figure}
-\noindent\includegraphics[width=0.9\textwidth]{Figures/slv_seasonal.pdf}
-\caption{ (a) Seasonal subsidence signatures assocaited with summer pumping as inferred from an L-band ALOS InSAR data that spans April 16, 2010 and September 1, 2010. (b) Seasonal uplift signatures associated with winter recharge as inferred from an L-band ALOS InSAR data that spans September 01, 2010 and March 4, 2011.}
-\label{fig:seasonal_def}
-\end{figure}
 
-\begin{figure}
-\noindent\includegraphics[width=0.9\textwidth]{Figures/ALA6.pdf}
-\caption{Hydraulic head variations at the confined aquifer well ALA6 between 1992 and 2011 as measured from well data (in blue) and estimated from ERS-1/2 (in magenta), Envisat (in red) and ALOS PALSAR (in green) InSAR data. The same aquifer storage parameters ($S_{ke}$=0.00553 and $\tau$ = 6 days) were used to convert InSAR deformation time series of all three satellite missions to head. Using the interpolated well data as ground truth, the RMS error of the InSAR head estimates is 1.49 meters for the ERS-1/2 data, 0.75 meters for the Envisat data, and 1.21 meters for the ALOS data.}
-\label{fig:ALA6}
-\end{figure}
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Joint inversion of coupled geomechanics and subsurface flow}
 In this section we describe our preliminary work on the poroelasticity inverse problem of inferring subsurface permeability from surface deformation and well data. Inference of subsurface permeability fields is commonly addressed through
@@ -498,7 +499,6 @@ We propose to develop a prototype system for application in the San Luis Valley 
 
 
 In this section we describe proposed research aimed at overcoming the challenges elucidated in the previous sections. These include scalable parallel adaptive mesh forward solvers (§3.1) for the poromechanics model, faster MCMC sampling for Bayesian inversion (§3.2), and end-to-end model reduction for optimization under uncertainty (§3.3). This section also describes two application testbeds for studying control and management of CO2 injection and induced seismicity (§3.4–§3.5).
-
 
 
 \subsection{In-situ and Remote Sensing Data Products}
